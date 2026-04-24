@@ -5,7 +5,7 @@ imort se.kth.iv1350.bikeshop.integration.Printer;
 imort se.kth.iv1350.bikeshop.integration.RegistryCreator;
 imort se.kth.iv1350.bikeshop.view.View;
 
-public main {
+public Main {
   /**
     * Contains the main method - start the application.
     */
