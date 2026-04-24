@@ -13,6 +13,7 @@ public Main {
     ReigistryCreator registry = new RegistryCreator();
     Printer printer = new Printer();
     Controller controller = new Controller(registry, printer);
-    View.startRepairShop();
+    System.out.println("Program started");
+    View.sampleExecution();
   }
 }
