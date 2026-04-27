@@ -1,20 +1,20 @@
 package se.kth.iv1350.bikeshop.model;
 
 import se.kth.iv1350.bikeshop.dto.RepairTaskDTO;
+import java.util.List;
+import java.util.ArrayList;
+
 
 public class RepairTask{
 
-    priv
-    //private String repairTasks;
-
-    RepairTaskDTO dto = new RepairTaskDTO(null, null, 0, false);
-    
-    public RepairTaskDTO calculateTaskCost(){
-
-    }
+    private List<RepairTaskDTO> addRepairTasks;
 
     public RepairTaskDTO addRepairTask(){
-
+        return RepairTaskDTO;
+    }
+    
+    public RepairTaskDTO calculateTaskCost(){
+        return RepairTaskDTO;
     }
 
     public RepairTaskDTO createRepairTask(RepairTaskDTO createdRepairOrder){
