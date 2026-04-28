@@ -35,11 +35,6 @@ public class RepairOrder{
         */
     }
 
-    public showDiagnosticReport(String repairOrderID) {
-        /**
-        * Used for getting the diagnostic report from the system
-        */
-    }
 
     public createRepairOrder (repairOrderID, customerDTO) {
         /**
