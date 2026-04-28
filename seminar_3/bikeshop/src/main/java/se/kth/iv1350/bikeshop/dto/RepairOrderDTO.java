@@ -39,6 +39,7 @@ public class RepairOrderDTO {
         this.repairTasks = new ArrayList<>();        // Start with empty task list — tasks added later
     }
 
+
     /**
      * Adds a repair task to this repair order DTO.
      *
@@ -48,6 +49,7 @@ public class RepairOrderDTO {
         repairTasks.add(repairTask);          // Add task to the list
         totalCost += repairTask.getCost();    // Automatically update total cost when task is added
     }
+
 
     /** @return The unique repair order ID. */
     public String getRepairOrderId() { return repairOrderId; }

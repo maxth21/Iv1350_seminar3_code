@@ -21,6 +21,7 @@ public class CustomerRegistry {
         addSampleData();               // Fill with fake customers (replaces a real database)
     }
 
+
     /**
      * Searches for a customer with the specified phone number.
      *
@@ -28,9 +29,11 @@ public class CustomerRegistry {
      * @return The found {@link CustomerDTO}, or <code>null</code> if no customer
      *         with the given phone number exists (alternative flow 5a).
      */
-    public CustomerDTO findCustomer(int phoneNr) {
+
+        //equals metoden fungerar endast om vi har ett format.
+    public CustomerDTO findCustomer(String phoneNr) {
         for (CustomerDTO customer : customers) {        // Loop through every customer in the list
-            if (customer.getPhoneNr() == phoneNr) {    // Check if this customer's phone matches
+            if (customer.getPhoneNr().equals(phoneNr)) {    // Check if this customer's phone matches
                 return customer;                        // Match found — return it immediately
             }
         }

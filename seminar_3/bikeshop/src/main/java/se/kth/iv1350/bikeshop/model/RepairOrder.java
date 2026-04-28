@@ -1,3 +1,7 @@
+import java.util.List;
+
+import se.kth.iv1350.bikeshop.dto.RepairOrderDTO;
+
 /**
  * RepairOrders are handled in this class.
  * Needs to import all DTO classes, RepairTask, registries!
@@ -11,7 +15,7 @@ public class RepairOrder{
 
     private double totalCost = 0;
     private String repairOrderInfo = " "; 
-    //private List, arraylist   ?
+    private List<RepairOrderDTO> repairTasks;
     
     RepairTask RepairTasks = new RepairTask();
 
