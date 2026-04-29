@@ -1,21 +1,22 @@
 import java.util.List;
 
+package se.kth.iv1350.bikeshop.integration;
+package se.kth.iv1350.bikeshop.dto; 
+package se.kth.iv1350.bikeshop.controller;
+
 import se.kth.iv1350.bikeshop.dto.RepairOrderDTO;
+import se.kth.iv1350.bikeshop.dto.RepairTaskDTO;
 
 /**
  * RepairOrders are handled in this class.
- * Needs to import all DTO classes, RepairTask, registries!
+ * Needs to import all DTO classes, RepairTask, registries! check how to import 
  */
-
-
-//import se.kth.iv1350.bikeshop.controller.Controller;
-//import se.kth.iv1350.bikeshop.dto; 
 
 public class RepairOrder{ 
 
     private double totalCost = 0;
     private String repairOrderInfo = " "; 
-    private List<RepairOrderDTO> repairTasks;
+    private List<RepairOrderDTO> RepairOrder;
     
     RepairTask RepairTasks = new RepairTask();
 
@@ -30,6 +31,7 @@ public class RepairOrder{
         /**
         * Calculates total cost depending on the repairTasks
         */
+        cost += getTotalCost(totalCost);
     }
 
     public boolean acceptedRepairOrder(String repairOrderID) {
