@@ -24,13 +24,14 @@ public class CustomerRegistry {
 
     /**
      * Searches for a customer with the specified phone number.
+     * The equals method requires a specified format in order to work as it should. 
+     * We only handle 10-digit phone numbers starting with 0.
      *
      * @param phoneNr The phone number to search for.
      * @return The found {@link CustomerDTO}, or <code>null</code> if no customer
      *         with the given phone number exists (alternative flow 5a).
      */
-
-        //equals metoden fungerar endast om vi har ett format.
+    
     public CustomerDTO findCustomer(String phoneNr) {
         for (CustomerDTO customer : customers) {        // Loop through every customer in the list
             if (customer.getPhoneNr().equals(phoneNr)) {    // Check if this customer's phone matches
@@ -40,21 +41,10 @@ public class CustomerRegistry {
         return null; // No match found — return null (triggers alternative flow 5a in View)
     }
 
-    /**
-     * Registers a new customer in the registry.
-     *
-     * @param customer A {@link CustomerDTO} containing the new customer's data.
-     * @return The registered {@link CustomerDTO}.
-     */
-    public CustomerDTO registerCustomer(CustomerDTO customer) {
-        customers.add(customer); // Add the new customer to our in-memory list
-        return customer;         // Return it so the caller can confirm what was saved
-    }
-
     // Private helper — not part of public interface, no Javadoc needed
     private void addSampleData() {
         // Hard-coded test data — replaces a real database
-        customers.add(new CustomerDTO("Anna Svensson", 701234567, "anna@mail.com"));
-        customers.add(new CustomerDTO("Erik Lindgren", 739876543, "erik@mail.com"));
+        customers.add(new CustomerDTO("Anna Svensson", "0701234567", "anna@mail.com"));
+        customers.add(new CustomerDTO("Erik Lindgren", "0739876543", "erik@mail.com"));
     }
 }
