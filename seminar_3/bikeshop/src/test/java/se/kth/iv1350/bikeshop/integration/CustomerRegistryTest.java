@@ -1,14 +1,13 @@
 package se.kth.iv1350.bikeshop.integration;
 
-import se.kth.iv1350.bikeshop.dto.CustomerDTO;
-
-import static org.junit.jupiter.api.Assertions.*;
-
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.AfterEach;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import se.kth.iv1350.bikeshop.dto.CustomerDTO;
 
 
 public class CustomerRegistryTest {
@@ -23,6 +22,13 @@ public class CustomerRegistryTest {
         registry = new CustomerRegistry();
     }
     
+    @Test
+    public void testDoesAddSampleDataAddData(){
+        CustomerRegistry customers = new CustomerRegistry();
+        boolean expResult = false;
+        boolean result = customers.equals(expResult);
+        assertEquals(customers, result, "Should be equal");
+    }
 
     @Test
     void testFindExistingCustomer() {
