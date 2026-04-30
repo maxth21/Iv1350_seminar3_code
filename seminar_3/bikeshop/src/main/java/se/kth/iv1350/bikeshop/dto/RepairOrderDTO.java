@@ -29,7 +29,6 @@ public class RepairOrderDTO {
     public RepairOrderDTO(String repairOrderId, CustomerDTO customer, BikeDTO bike,
                           String problemDescription, double totalCost, String accepted) {
         this.repairOrderId = repairOrderId;         // Store the unique order ID
-        this
         this.problemDescription = problemDescription; // Store the reported problem
         this.totalCost = totalCost;                  // Store initial cost (usually 0.0 at creation)
         this.accepted = accepted;                          // Store initial state (e.g. "created")
