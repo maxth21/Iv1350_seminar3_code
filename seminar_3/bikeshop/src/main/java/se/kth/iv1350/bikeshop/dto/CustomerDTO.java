@@ -21,7 +21,7 @@ public class CustomerDTO{
     }
 
     public String getPhoneNr(){
-        return name;
+        return phoneNr;
     }
 
     public String getEmail(){
