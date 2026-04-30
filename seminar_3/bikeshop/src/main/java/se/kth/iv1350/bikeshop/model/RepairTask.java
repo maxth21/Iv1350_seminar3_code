@@ -8,10 +8,18 @@ import java.util.ArrayList;
 public class RepairTask{
 
     private List<RepairTaskDTO> addRepairTasks;
+    
 
-    public RepairTaskDTO addRepairTask(){
-        return RepairTaskDTO;
+    /**
+     * Adds a repair task to this repair order DTO.
+     *
+     * @param repairTask The {@link RepairTaskDTO} to add.
+     */
+    public RepairTaskDTO addRepairTask(RepairTaskDTO repairTask) {
+        repairTasks.add(repairTask);          // Add task to the list
+        totalCost += repairTask.getCost();    // Automatically update total cost when task is added
     }
+
     
     public RepairTaskDTO calculateTaskCost(){
         return RepairTaskDTO;
