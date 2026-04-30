@@ -2,8 +2,12 @@ package se.kth.iv1350.bikeshop.integration;
 
 import org.junit.jupiter.api.AfterEach;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
+
+import java.util.ArrayList;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -23,11 +27,19 @@ public class CustomerRegistryTest {
     }
     
     @Test
-    public void testDoesAddSampleDataAddData(){
+    public void testIfAddsSampleData(){
         CustomerRegistry customers = new CustomerRegistry();
-        boolean expResult = false;
-        boolean result = customers.equals(expResult);
-        assertEquals(customers, result, "Should be equal");
+        Object ob = null;
+        assertNotEquals(customers, ob, "should not be equal");
+    }
+
+    @Test
+    public void testIfContainsCorrectSampleData(){
+        customers = new ArrayList<>(); // Initialize the list (empty at first)
+        addSampleData();        
+        CustomerRegistry customers = new CustomerRegistry();
+        
+
     }
 
     @Test
