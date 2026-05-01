@@ -30,9 +30,9 @@ public class Printer {
             System.out.println("Order ID  : " + repairOrder.getRepairOrderId());
             System.out.println("Customer  : " + customer.getName());
             System.out.println("Phone     : " + customer.getPhoneNr());
-            System.out.println("Bike      : " + repairOrder.getBike().getBrand()
-                    + " " + repairOrder.getBike().getModel()
-                    + " (S/N: " + repairOrder.getBike().getSerialNr() + ")");
+            System.out.println("Bike      : " + bike.getBrand()
+                    + " " + bike.getModel()
+                    + " (S/N: " + bike.getSerialNr() + ")");
             System.out.println("Problem   : " + repairOrder.getProblemDescription());
             System.out.println("--- Tasks ---");
             for (RepairTaskDTO task : repairOrder.getRepairTasks()) {
