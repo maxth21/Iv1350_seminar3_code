@@ -1,11 +1,11 @@
 import java.util.List;
 
-package se.kth.iv1350.bikeshop.integration;
-package se.kth.iv1350.bikeshop.dto; 
-package se.kth.iv1350.bikeshop.controller;
+package se.kth.iv1350.bikeshop.model;
 
 import se.kth.iv1350.bikeshop.dto.RepairOrderDTO;
 import se.kth.iv1350.bikeshop.dto.RepairTaskDTO;
+import se.kth.iv1350.bikeshop.dto.BikeDTO; 
+import se.kth.iv1350.bikeshop.controller.Controller;
 
 /**
  * RepairOrders are handled in this class.
