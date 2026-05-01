@@ -1,8 +1,9 @@
 package se.kth.iv1350.bikeshop.integration; // Package = integration layer (handles "database" communication)
 
-import se.kth.iv1350.bikeshop.dto.CustomerDTO; // Import our DTO class for passing customer data between layers
-import java.util.ArrayList; // ArrayList = a resizable list, used as our "in-memory database"
-import java.util.List;      // List = the interface type we use (good practice: program to interface)
+import java.util.ArrayList; // Import our DTO class for passing customer data between layers
+import java.util.List; // ArrayList = a resizable list, used as our "in-memory database"
+
+import se.kth.iv1350.bikeshop.dto.CustomerDTO;      // List = the interface type we use (good practice: program to interface)
 
 /**
  * Handles all communication with the customer database.
