@@ -5,9 +5,9 @@ package se.kth.iv1350.bikeshop.dto;
  */
 
 public class BikeDTO{
-    private String brand;
-    private String model;
-    private String serialNr;
+    private final String brand;
+    private final String model;
+    private final String serialNr;
 
     /**
      * Constructor for class BikeDTO

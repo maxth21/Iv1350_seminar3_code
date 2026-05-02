@@ -5,33 +5,35 @@ import java.util.List;      // List = interface type (good practice: program to 
 
 /**
  * Data transfer object for a repair order.
- * Used to transfer repair order data between layers without
- * exposing the internal {@link se.kth.iv1350.bikeshop.model.RepairOrder} object.
+ * Used to transfer repair order data between layers without exposing the internal {@link se.kth.iv1350.bikeshop.model.RepairOrder} object.
  */
 public class RepairOrderDTO {
 
     private final String repairOrderId;        // final = ID never changes after creation
     private final String problemDescription;    // final = problem description never changes
-    private final int date;
-    private int EstimatedCompletionDate;
-    private double totalCost;                   // NOT final = changes when repair tasks are added
+    private final int date; 
+    private int estimatedCompletionDate;
     private boolean accepted;                       // NOT final = changes when order is accepted/rejected
+    private double totalCost;                   // NOT final = changes when repair tasks are added
    
     /**
-     * Creates a new instance with the specified repair order data.
+     * Creates a new instance with the specified repair order data
      *
-     * @param repairOrderId      The unique ID of the repair order.
-     * @param 
-     * @param problemDescription A description of the reported problem.
-     * @param totalCost          The total cost of all repair tasks.
-     * @param accepted           The current state of the repair order.
+     * @param repairOrderId             The unique ID of the repair order
+     * @param problemDescription        A description of the reported problem
+     * @param date                      The date where bike was recieved
+     * @param estimatedCompletitionDate Estimated date for completing bike reparation
+     * @param accepted                  The current state of the repair order
+     * @param totalCost                 The total cost of all repair tasks
      */
-    public RepairOrderDTO(String repairOrderId, CustomerDTO customer, BikeDTO bike,
-                          String problemDescription, double totalCost, String accepted) {
+
+    public RepairOrderDTO(String repairOrderId, String problemDescription, int date, int estimatedCompletitionDate, boolean accepted, double totalCost) {
         this.repairOrderId = repairOrderId;         // Store the unique order ID
         this.problemDescription = problemDescription; // Store the reported problem
+        this.date = date;
+        this.estimatedCompletionDate = estimatedCompletitionDate;
+        this.accepted = accepted;                       // Store initial state (e.g. "created")
         this.totalCost = totalCost;                  // Store initial cost (usually 0.0 at creation)
-        this.accepted = accepted;                          // Store initial state (e.g. "created")
     }
 
     /** @return The unique repair order ID. */
@@ -59,7 +61,7 @@ public class RepairOrderDTO {
         return estimatedCompletionDate;
     }
     /** @return The current state of the repair order. */
-    public String getAccepted() {
+    public boolean getAccepted() {
         return accepted;
     }
 

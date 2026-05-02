@@ -6,7 +6,7 @@ package se.kth.iv1350.bikeshop.dto;
 
 public class CustomerDTO{
 
-    private String name;
+    private final String name;
     private String phoneNr;
     private String email;
 
