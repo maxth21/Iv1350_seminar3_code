@@ -24,24 +24,41 @@ public class RepairOrderDTO {
     private boolean accepted;                       // NOT final = changes when order is accepted/rejected
    
     /**
+<<<<<<< HEAD
      * Creates a new instance with the specified repair order data.
      * Initializes boolean accepted as false.
      * Uses CURRENT_DATE as hardcoded value so that we cannot change the date after the object has been created.
      * 
+=======
+     * Creates a new instance with the specified repair order data
+>>>>>>> 0665f50bc70ef9cf30c837d97746139113a0f4f0
      *
-     * @param repairOrderId      The unique ID of the repair order.
-     * @param 
-     * @param problemDescription A description of the reported problem.
-     * @param totalCost          The total cost of all repair tasks.
-     * @param accepted           The current state of the repair order.
+     * @param repairOrderId             The unique ID of the repair order
+     * @param problemDescription        A description of the reported problem
+     * @param date                      The date where bike was recieved
+     * @param estimatedCompletitionDate Estimated date for completing bike reparation
+     * @param accepted                  The current state of the repair order
+     * @param totalCost                 The total cost of all repair tasks
      */
+<<<<<<< HEAD
     public RepairOrderDTO(String repairOrderId, CustomerDTO customer, BikeDTO bike,
                           String problemDescription, double totalCost, boolean accepted) {
+}
+
+    public RepairOrderDTO(String repairOrderId, String problemDescription, int date, int estimatedCompletitionDate, boolean accepted, double totalCost) {
+>>>>>>> 0665f50bc70ef9cf30c837d97746139113a0f4f0
         this.repairOrderId = repairOrderId;         // Store the unique order ID
         this.problemDescription = problemDescription; // Store the reported problem
+        this.date = date;
+        this.estimatedCompletionDate = estimatedCompletitionDate;
+        this.accepted = accepted;                       // Store initial state (e.g. "created")
         this.totalCost = totalCost;                  // Store initial cost (usually 0.0 at creation)
+<<<<<<< HEAD
         this.accepted = false;                          // Store initial state (e.g. "created")
+=======
+>>>>>>> 0665f50bc70ef9cf30c837d97746139113a0f4f0
     }
+
 
     /** @return The unique repair order ID. */
     public String getRepairOrderId(){
