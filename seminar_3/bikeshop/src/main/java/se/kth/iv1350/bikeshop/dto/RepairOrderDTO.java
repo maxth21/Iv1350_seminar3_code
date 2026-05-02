@@ -13,11 +13,12 @@ public class RepairOrderDTO {
     /**
      * Hard-coded value for date in order to test the program
     */
-    public final int CURRENT_DATE = 260504;
+
+    //public final int CURRENT_DATE = 260504;
 
     private final String repairOrderId;        // final = ID never changes after creation
     private final String problemDescription;    // final = problem description never changes
-    private final int date = CURRENT_DATE;
+    private final int date = 0;
     private int estimatedCompletionDate;
     private double totalCost;                   // NOT final = changes when repair tasks are added
     private boolean accepted;                       // NOT final = changes when order is accepted/rejected
