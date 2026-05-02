@@ -40,6 +40,8 @@ public class RepairTask{
     public RepairTaskDTO createRepairTask(RepairTaskDTO createdRepairOrder){
 
     }
+
+    //här behöver vi en testmetod som lägger till kostnaden etc.
 }
 
 
