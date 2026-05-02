@@ -2,6 +2,9 @@ package se.kth.iv1350.bikeshop.model;
 
 import se.kth.iv1350.bikeshop.dto.DiagnosticReportDTO;
 
+//import
+
+
 /**
  * Represents a diagnostic report for a repair order.
  * Contains information about the problem found during diagnosis.

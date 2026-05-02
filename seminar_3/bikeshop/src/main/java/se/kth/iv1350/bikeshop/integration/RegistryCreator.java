@@ -8,6 +8,7 @@ public class RegistryCreator {
 
     private final CustomerRegistry customerRegistry;       // final = created once, never replaced
     private final RepairOrderRegistry repairOrderRegistry; // final = same reason, ensures consistency
+    private final BikeRegistry bikeRegistry;
 
     /**
      * Creates a new instance and initializes all registries.
@@ -15,6 +16,7 @@ public class RegistryCreator {
     public RegistryCreator() {
         customerRegistry = new CustomerRegistry();             // Create the one CustomerRegistry for the whole program
         repairOrderRegistry = new RepairOrderRegistry();       // Create the one RepairOrderRegistry for the whole program
+        bikeRegistry = new BikeRegistry();
     }
     // Why RegistryCreator exists:
     // Controller should not create registries itself (that would be high coupling).
@@ -37,4 +39,12 @@ public class RegistryCreator {
     public RepairOrderRegistry getRepairOrderRegistry() {
         return repairOrderRegistry; // Give caller access to repair order registry (read-only reference)
     }
-}
+       /**
+     * Returns the {@link BikeRegistry}.
+     *
+     * @return The bike registry.
+     */
+    public BikeRegistry getBikeRegistry() {
+        return bikeRegistry;
+    }
+}    
