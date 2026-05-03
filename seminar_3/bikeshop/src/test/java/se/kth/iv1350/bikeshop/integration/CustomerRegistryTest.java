@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
+import java.util.List;
 import java.util.ArrayList;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -34,11 +35,14 @@ public class CustomerRegistryTest {
     }
 
     @Test
-    public void testIfContainsCorrectSampleData(){
-        customers = new ArrayList<>(); // Initialize the list (empty at first)
-        addSampleData();        
+    public void testIfContainsCorrectSampleData(){       
         CustomerRegistry customers = new CustomerRegistry();
-        
+        customers.
+        List<String> customerData = new ArrayList<>();
+        customerData.add("Anna Svensson");
+        customerData.add("0701234567");
+        customerData.add("anna@mail.com");
+        assertEquals(customers, customerData);
 
     }
 
