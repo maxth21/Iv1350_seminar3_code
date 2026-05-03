@@ -36,16 +36,14 @@ public class RepairOrder{
 
     }
 
-
-    public void updateRepairOrder(RepairOrderDTO repairOrderID) {    
         /**
         * updateRepairOrder is used when the RO needs to be updated and saved.
         * method addRepairTasks is using this method in order to be able to add tasks. 
         **/
+    public void updateRepairOrder(RepairOrderDTO repairOrderID) {    
+       
     }
-
-    public void calculateTotalCost(){ 
-        /**
+    /**
         * Calculates total cost depending in on the repairTasks, which have separate costs
         * The field represetning totalCost needs to be updated, and remembered inside this object
         * This is void because the method is a command and changes the state of the field,
@@ -56,6 +54,7 @@ public class RepairOrder{
         *
         *No parameters.
         */
+    public void calculateTotalCost(){ 
        //lägg till repairstask
        //uppdatera total cost
        //ändra status
@@ -83,24 +82,16 @@ public class RepairOrder{
       
         //RepairOrderDTO acceptRepairOrderDTO = new RepairOrderDTO(repairOrderID repairOrderID);
         //skapa en lista av ett objekt
-        
         //loopa igenom repairorders och sätt den med sökt ID till acceppted
         for(RepairOrderDTO foundMatchingRepairOrderID : repairOrders){
             if(foundMatchingRepairOrderID.getRepairOrderId().equals(repairOrderID)){
                 //set accepted to true
                 RepairOrder.getAccepted();
-                //this.
+                //this.acceptOrder = true;4
             }
         }
     }
-/*        boolean acceptOrder = getAccepted(repairOrderDTO);
-        this.acceptOrder = true;4
-
-
-       return this.acceptOrder(repairOrderID);
-    }
-
- */
+    
         /**
         * Creates a new repairorder linked to customer and stores in DTO
         */
