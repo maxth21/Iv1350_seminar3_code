@@ -5,18 +5,29 @@ import java.util.List;      // List = interface type (good practice: program to 
 
 /**
  * Data transfer object for a repair order.
- * Used to transfer repair order data between layers without exposing the internal {@link se.kth.iv1350.bikeshop.model.RepairOrder} object.
+ * Used to transfer repair order data between layers without
+ * exposing the internal {@link se.kth.iv1350.bikeshop.model.RepairOrder} object.
  */
 public class RepairOrderDTO {
 
+    /**
+     * Hard-coded value for date in order to test the program
+    */
+
+    //public final int CURRENT_DATE = 260504;
+
     private final String repairOrderId;        // final = ID never changes after creation
     private final String problemDescription;    // final = problem description never changes
-    private final int date; 
+    private final int date;
     private int estimatedCompletionDate;
-    private boolean accepted;                       // NOT final = changes when order is accepted/rejected
     private double totalCost;                   // NOT final = changes when repair tasks are added
+    private boolean accepted;                       // NOT final = changes when order is accepted/rejected
    
     /**
+     * Creates a new instance with the specified repair order data.
+     * Initializes boolean accepted as false.
+     * Uses CURRENT_DATE as hardcoded value so that we cannot change the date after the object has been created.
+     * 
      * Creates a new instance with the specified repair order data
      *
      * @param repairOrderId             The unique ID of the repair order
@@ -34,7 +45,9 @@ public class RepairOrderDTO {
         this.estimatedCompletionDate = estimatedCompletitionDate;
         this.accepted = accepted;                       // Store initial state (e.g. "created")
         this.totalCost = totalCost;                  // Store initial cost (usually 0.0 at creation)
+        this.accepted = false;                          // Store initial state (e.g. "created")
     }
+
 
     /** @return The unique repair order ID. */
     public String getRepairOrderId(){
@@ -46,7 +59,7 @@ public class RepairOrderDTO {
         return problemDescription;
     }
     
-    /** @return The total cost of all repair tasks. */
+    /** @return The date. */
     public int getDate() {
         return date;
     }

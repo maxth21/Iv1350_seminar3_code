@@ -2,11 +2,14 @@ package se.kth.iv1350.bikeshop.controller;
 
 import se.kth.iv1350.bikeshop.dto.BikeDTO;
 import se.kth.iv1350.bikeshop.dto.CustomerDTO;
+import se.kth.iv1350.bikeshop.dto.DiagnosticReportDTO;
 import se.kth.iv1350.bikeshop.dto.RepairOrderDTO;
 import se.kth.iv1350.bikeshop.dto.RepairTaskDTO;
 import se.kth.iv1350.bikeshop.integration.Printer;
 import se.kth.iv1350.bikeshop.integration.RegistryCreator;
 import se.kth.iv1350.bikeshop.model.RepairOrder;
+import se.kth.iv1350.bikeshop.model.RepairOrder;
+
 
 /**
  * Handles all calls between the view and the model and integration layers.
@@ -35,7 +38,7 @@ public class Controller {
      * @param phoneNr The phone number to search for.
      * @return The found {@link CustomerDTO}, or {@code null} if no match exists.
      */
-    public CustomerDTO searchCustomerByPhoneNr(String phoneNr) {
+    public CustomerDTO searchCustomer(String phoneNr) {
         return registryCreator.getCustomerRegistry().findCustomer(phoneNr);
     }
 
@@ -45,7 +48,7 @@ public class Controller {
      * @param phoneNr The customer's phone number.
      * @return The found {@link BikeDTO}, or {@code null} if no match exists.
      */
-    public BikeDTO searchBikeByPhoneNr(String phoneNr) {
+    public BikeDTO searchBike(String phoneNr) {
         return registryCreator.getBikeRegistry().findBike(phoneNr);
     }
 
@@ -57,9 +60,9 @@ public class Controller {
      * @param problemDescription A description of the reported problem.
      * @return A {@link RepairOrderDTO} representing the created order.
      */
-    public RepairOrderDTO createRepairOrder(CustomerDTO customer, BikeDTO bike,
-                                            String problemDescription) {
-        currentRepairOrder = new RepairOrder(customer, bike, problemDescription);
+    public RepairOrderDTO createRepairOrder(RepairOrderDTO repairOrderDTO, CustomerDTO customer, BikeDTO bike,
+                                            DiagnosticReportDTO problemDescription, int date) {
+        currentRepairOrder = new RepairOrder(repairOrderDTO, customer, bike, problemDescription, date);
         RepairOrderDTO dto = currentRepairOrder.getRepairOrderDTO();
         registryCreator.getRepairOrderRegistry().saveRepairOrder(dto);
         return dto;
@@ -90,4 +93,20 @@ public class Controller {
         printer.printRepairOrder(currentRepairOrder.getRepairOrderDTO(), accepted);
         return accepted;
     }
+
+    public DiagnosticReport addDiagnosticReport(){
+
+    }
+
+    public upDateRepairOrder(){
+
+    }
+
+    public printRepairOrder(){
+        /**
+         * 
+         */
+    }
+
+    
 }

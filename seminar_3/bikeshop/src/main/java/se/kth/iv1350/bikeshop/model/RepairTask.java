@@ -7,11 +7,11 @@ import java.util.ArrayList;
 
 public class RepairTask{
 
-    private List<RepairTaskDTO> addRepairTasks;
+    private List<RepairTaskDTO> repairTasks;
     
 
     /**
-     * Adds a repair task to this repair order DTO.
+     * Adds a repair task to this repair order DTO and updates cost.
      *
      * @param repairTask The {@link RepairTaskDTO} to add.
      */
@@ -20,19 +20,28 @@ public class RepairTask{
         totalCost += repairTask.getCost();    // Automatically update total cost when task is added
     }
 
-    
-    public RepairTaskDTO calculateTaskCost(){
+    /**
+     * We want to set the individual cost 
+     * @param individualTaskCost
+     * @return
+     */
+     public RepairTaskDTO calculateTaskCost(RepairTaskDTO individualTaskCost){
+        double indTaskCost = getCost(RepairTaskDTO);
         return RepairTaskDTO;
     }
+    
 
+
+    /**
+     * Constructor?
+     * @param createdRepairOrder
+     * @return
+     */
     public RepairTaskDTO createRepairTask(RepairTaskDTO createdRepairOrder){
 
     }
 
-    public double calculateTotalCost(){
-
-    }
-
+    //här behöver vi en testmetod som lägger till kostnaden etc.
 }
 
 
