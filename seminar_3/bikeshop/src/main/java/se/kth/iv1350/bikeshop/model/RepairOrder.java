@@ -24,12 +24,16 @@ public class RepairOrder{
     private List<RepairOrderDTO> RepairOrder;
     
     //konstruktor av RO
-    public RepairOrder objOfRepairOrder(){
+    public RepairOrder (List<RepairOrderDTO> repairOrderList){
 
         RepairTask RepairTasks = new RepairTask();
 
         //skapa en lista med repairtasks
-        List<RepairTask> repairTasks = new ArrayList<>();
+        List<RepairTask> repairTasksList = new ArrayList<>();
+
+        //lista med repairorders
+        List<RepairOrderDTO> repairOrdersList = new ArrayList<>();
+
 
     }
 
@@ -80,13 +84,13 @@ public class RepairOrder{
         //RepairOrderDTO acceptRepairOrderDTO = new RepairOrderDTO(repairOrderID repairOrderID);
 
         //skapa en lista av ett objekt
-        List<RepairOrderDTO> repairOrders = new ArrayList<>();
         
         //loopa igenom repairorders och sätt den med sökt ID till acceppted
         for(RepairOrderDTO foundMatchingRepairOrderID : repairOrders){
             if(foundMatchingRepairOrderID.getRepairOrderId().equals(repairOrderID)){
                 //set accepted to true
-                repairOrders.getAccepted();
+                RepairOrder.getAccepted();
+                //this.
             }
         }
     }
@@ -99,7 +103,7 @@ public class RepairOrder{
 
  */
 
-    public createRepairOrder (repairOrderID, customerDTO) {
+    public createRepairOrder (repairOrderId, customerDTO) {
         /**
         * Creates a new repairorder linked to customer and stores in DTO
         */

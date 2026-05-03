@@ -18,7 +18,7 @@ public class RepairOrderDTO {
 
     private final String repairOrderId;        // final = ID never changes after creation
     private final String problemDescription;    // final = problem description never changes
-    private final int date = 0;
+    private final int date;
     private int estimatedCompletionDate;
     private double totalCost;                   // NOT final = changes when repair tasks are added
     private boolean accepted;                       // NOT final = changes when order is accepted/rejected
