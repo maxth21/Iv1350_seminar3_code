@@ -34,7 +34,6 @@ public class RepairOrder{
         //lista med repairorders
         List<RepairOrderDTO> repairOrdersList = new ArrayList<>();
 
-
     }
 
 
@@ -72,8 +71,6 @@ public class RepairOrder{
         //save status with this.
     }
 
-    //ska den verkligen returnera  boolean? eller ska den ändra state?
-    public boolean acceptedRepairOrder(String repairOrderID) {
         /**
          *Changes the state of the repairOrder to accepted 
          *  
@@ -81,8 +78,10 @@ public class RepairOrder{
          * alternative flow as false or handled via exception later
          */
 
+    //ska den verkligen returnera  boolean? eller ska den ändra state?
+    public boolean acceptedRepairOrder(String repairOrderID) {
+      
         //RepairOrderDTO acceptRepairOrderDTO = new RepairOrderDTO(repairOrderID repairOrderID);
-
         //skapa en lista av ett objekt
         
         //loopa igenom repairorders och sätt den med sökt ID till acceppted
@@ -102,11 +101,10 @@ public class RepairOrder{
     }
 
  */
-
-    public createRepairOrder (repairOrderId, customerDTO) {
         /**
         * Creates a new repairorder linked to customer and stores in DTO
         */
+    public createRepairOrder (repairOrderId, customerDTO) {
+
     }
-    
 }
