@@ -21,7 +21,6 @@ public class DiagnosticReport {
      */
     public DiagnosticReport() {
     }
-
     /**
      * Adds a diagnostic report with the specified problem description.
      * An object is created using an reference to DiagnosticRepairDTO. 

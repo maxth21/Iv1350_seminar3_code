@@ -4,6 +4,7 @@ import se.kth.iv1350.bikeshop.dto.BikeDTO;
 import se.kth.iv1350.bikeshop.dto.CustomerDTO;
 import se.kth.iv1350.bikeshop.dto.RepairOrderDTO;
 import se.kth.iv1350.bikeshop.dto.RepairTaskDTO;
+import se.kth.iv1350.bikeshop.model.RepairOrder.RepairOrderState;
 
 /**
  * Handles printing of repair orders.
@@ -24,8 +25,7 @@ public class Printer {
      * @param repairOrder The {@link RepairOrderDTO} to print.
      */
     public void printRepairOrder(RepairOrderDTO repairOrder, CustomerDTO customer, BikeDTO bike, RepairTaskDTO repairTask, boolean accepted) {
-
-        if(accepted = true){
+        if(RepairOrderState = ACCEPTED){
             System.out.println("\n=== REPAIR ORDER ===");
             System.out.println("Order ID  : " + repairOrder.getRepairOrderId());
             System.out.println("Customer  : " + customer.getName());

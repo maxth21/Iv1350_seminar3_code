@@ -5,6 +5,9 @@ import se.kth.iv1350.bikeshop.dto.BikeDTO;
 import se.kth.iv1350.bikeshop.dto.CustomerDTO;
 import se.kth.iv1350.bikeshop.dto.RepairOrderDTO;
 import se.kth.iv1350.bikeshop.dto.RepairTaskDTO;
+import se.kth.iv1350.bikeshop.model.RepairOrder.RepairOrderState;
+
+
 
 /**
  * The application's only view.
@@ -46,7 +49,7 @@ public class View {
         System.out.println("Order ID    : " + order.getRepairOrderId());
         System.out.println("Problem     : " + order.getProblemDescription());
         System.out.println("Total cost  : " + order.getTotalCost() + " kr");
-        System.out.println("Accepted    : " + order.isAccepted());
+        System.out.println("Accepted    : " + order.getSTATE());
 
         System.out.println("\n--- Step 4: Add repair tasks ---");
         RepairTaskDTO task1 = controller.addRepairTask(
@@ -64,7 +67,8 @@ public class View {
         System.out.println("Total cost so far: " + order.getTotalCost() + " kr");
 
         System.out.println("\n--- Step 5: Customer accepts repair order ---");
-        boolean accepted = controller.acceptRepairOrder(true);
+        //handel enum here
+        RepairOrderState accepted = controller.setOrderStatus(ACCEPTED);
         System.out.println("Accepted    : " + accepted);
     }
 }

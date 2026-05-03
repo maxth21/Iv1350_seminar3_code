@@ -22,18 +22,20 @@ public class RepairOrder{
     private double totalCost = 0;
     private String repairOrderInfo = " "; 
     private List<RepairOrderDTO> RepairOrder;
+
+    public enum RepairOrderState {
+        NEWLY_CREATED,
+        READY_FOR_APPROVAL,
+        REJECTED,
+        ACCEPTED
+    }
     
     //konstruktor av RO
     public RepairOrder (List<RepairOrderDTO> repairOrderList){
 
         RepairTask RepairTasks = new RepairTask();
-
         //skapa en lista med repairtasks
         List<RepairTask> repairTasksList = new ArrayList<>();
-
-        //lista med repairorders
-        List<RepairOrderDTO> repairOrdersList = new ArrayList<>();
-
     }
 
         /**
@@ -86,16 +88,17 @@ public class RepairOrder{
         for(RepairOrderDTO foundMatchingRepairOrderID : repairOrders){
             if(foundMatchingRepairOrderID.getRepairOrderId().equals(repairOrderID)){
                 //set accepted to true
-                RepairOrder.getAccepted();
-                //this.acceptOrder = true;4
+                setState(RepairOrderState);
+                //this.acceptOrder = true;
             }
         }
     }
     
         /**
-        * Creates a new repairorder linked to customer and stores in DTO
+        * Creates a new repairorder linked to customer and stores in DTO 
+        * OBS: ska endast finnas i controller?
         */
-    public createRepairOrder (repairOrderId, customerDTO) {
+    public createRepairOrder (RepairOrderDTO repairOrder ) {
 
     }
 }
