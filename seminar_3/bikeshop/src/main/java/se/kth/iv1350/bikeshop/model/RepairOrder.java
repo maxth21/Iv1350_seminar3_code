@@ -25,7 +25,7 @@ public class RepairOrder{
     }
 
     //list of repairtasks
-    private List<RepairTaskDTO> repairTasks;
+    private List<RepairTaskDTO > repairTasks;
     //totalCostInMOdel är et fält som model behöver för att det vi skapar ska kunna fortsätta existera så länge objektet finns
     private double totalCostInModel;
 
@@ -40,6 +40,13 @@ public class RepairOrder{
     public double TotalCostInModel (){
         return totalCostInModel;
     }
+
+    //getter for repairstasks list
+    public List<RepairTaskDTO> getrepairTasks(){
+        return repairTasks;
+    } 
+
+
         /**
         * updateRepairOrder is used when the RO needs to be updated and saved.
         * method addRepairTasks is using this method in order to be able to add tasks. 
