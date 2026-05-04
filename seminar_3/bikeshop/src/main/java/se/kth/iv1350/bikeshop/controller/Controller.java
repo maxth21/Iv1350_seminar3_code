@@ -96,13 +96,15 @@ public class Controller {
     }
 
     public DiagnosticReport addDiagnosticReport(){
-
+        //anrop till model med en getter för att kunna se resultat, läsa vad model har beräknat 
+        //double currentRepairTaskCost = RepairOrder.getTotalCostInModel();
+        //totalCostInModel currentRepairTaskCost = RepairOrderDTO(totalCostInModel);
     }
 
     /**
      * Updates repairOrder when new info is added
      */
-    public upDateRepairOrder(){
+    public updateRepairOrder(){
 
     }
     /**
