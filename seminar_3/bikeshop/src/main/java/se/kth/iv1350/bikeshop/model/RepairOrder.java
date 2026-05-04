@@ -3,12 +3,7 @@ package se.kth.iv1350.bikeshop.model;
 import java.util.ArrayList;
 import java.util.List;
 
-import se.kth.iv1350.bikeshop.dto.RepairOrderDTO;
 import se.kth.iv1350.bikeshop.dto.RepairTaskDTO;
-import se.kth.iv1350.bikeshop.model.RepairTask;
-import se.kth.iv1350.bikeshop.dto.BikeDTO;
-import se.kth.iv1350.bikeshop.dto.CustomerDTO;
-import se.kth.iv1350.bikeshop.controller.Controller;
 
 /**
  * RepairOrders are handled in this class.
@@ -53,40 +48,15 @@ public class RepairOrder{
     }
 
 
-        /**
-        * updateRepairOrder is used when the RO needs to be updated and saved.
-        * method addRepairTasks is using this method in order to be able to add tasks. 
-        **/
-    public void updateRepairOrder(RepairOrderDTO repairOrderID) {    
-       
-    }
+    
     /**
-        * Calculates total cost depending in on the repairTasks, which have separate costs
-        * The field represetning totalCost needs to be updated, and remembered inside this object
-        * This is void because the method is a command and changes the state of the field,
-        * and store data inside the object
-        * 
-        *Cost is stored in totalCost
-        *newCost = summan av kostnaderna för alla RepairTasks som hör till denna RepairOrder
-        *
-        *No parameters.
-        */
-    public void calculateTotalCost(){ 
-       //lägg till repairstask
-       //uppdatera total cost
-       //ändra status
-        double sum = 0.0;
-        
-        //ReoairTasks cannot be reached like this - variable is private. Should we use a getter method?
-        for(RepairTask newVariableTask : repairTasks;)
-            task.getCost();
-            sum += task.getCost();
-
-
-            this.totalCost = sum; 
-        //save status with this.
+    *Returns the total cost of repairtasks, which are calculated by addRepairTask 
+    * 
+    */
+    public double readTotalCost(RepairTask newTask){ 
+        return totalCostInModel;
     }
-
+        
     /**
     *Changes the state of the repairOrder to accepted 
     *  
