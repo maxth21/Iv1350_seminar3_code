@@ -30,28 +30,7 @@ public class CustomerRegistryTest {
         assertNotEquals(customers, ob, "should not be equal");
     }
  
-    @Test
-    public void testIfContainsCorrectSampleData(){       
-        
-        CustomerRegistry registry = new CustomerRegistry();
-        CustomerDTO customer = registry.findCustomer("0701234567");
 
-// Härifrån och nedåt bryr du dig inte längre om registryt
-
-        assertEquals("0701234567", customer.getPhoneNr());
-
-        
-        /*CustomerRegistry customers = new CustomerRegistry();
-        //customers.
-        List<String> customerData = new ArrayList<>();
-        customerData.add("Anna Svensson");
-        customerData.add("0701234567");
-        customerData.add("anna@mail.com");
-        assertEquals(customers, customerData);
-*/
-    }
-
-    
     @Test
     public void testIfContainsCorrectPhoneNr(){       
         
