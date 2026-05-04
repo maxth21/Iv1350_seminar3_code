@@ -2,6 +2,7 @@ package se.kth.iv1350.bikeshop.integration;
 
 import org.junit.jupiter.api.AfterEach;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
@@ -28,21 +29,28 @@ public class CustomerRegistryTest {
     }
     
     @Test
-    public void testIfAddsSampleData(){
+    public void testIfObjectIsCreated(){
         CustomerRegistry customers = new CustomerRegistry();
         Object ob = null;
-        assertNotEquals(customers, ob, "should not be equal");
+        assertNotEquals(customers, ob, "Object should be created");
+    }
+
+    @Test
+    public void testIfNotEmpty(){
+        CustomerRegistry customer = new CustomerRegistry();
+        List<String> customerData = new ArrayList<>();   
+        assertFalse(customer.equals(customerData));
     }
 
     @Test
     public void testIfContainsCorrectSampleData(){       
         CustomerRegistry customers = new CustomerRegistry();
-        customers.
+        List<String> existingCustomer = customers.findCustomer("0701234567")();
         List<String> customerData = new ArrayList<>();
         customerData.add("Anna Svensson");
         customerData.add("0701234567");
         customerData.add("anna@mail.com");
-        assertEquals(customers, customerData);
+        assertEquals(customerData, existingCustomer, "Customer registry should contain correct sample data");
 
     }
 
@@ -57,7 +65,6 @@ public class CustomerRegistryTest {
         CustomerDTO result = registry.findCustomer("0000000000");
         assertNull(result, "Should return null for unknown customer.");
     }
-
 
     @AfterEach
     void tearDown() {

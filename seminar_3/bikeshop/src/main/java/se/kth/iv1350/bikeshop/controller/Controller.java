@@ -8,7 +8,7 @@ import se.kth.iv1350.bikeshop.dto.RepairTaskDTO;
 import se.kth.iv1350.bikeshop.integration.Printer;
 import se.kth.iv1350.bikeshop.integration.RegistryCreator;
 import se.kth.iv1350.bikeshop.model.RepairOrder;
-import se.kth.iv1350.bikeshop.model.RepairOrder;
+import se.kth.iv1350.bikeshop.model.DiagnosticReport;
 
 
 /**
@@ -60,9 +60,9 @@ public class Controller {
      * @param problemDescription A description of the reported problem.
      * @return A {@link RepairOrderDTO} representing the created order.
      */
-    public RepairOrderDTO createRepairOrder(RepairOrderDTO repairOrderDTO, CustomerDTO customer, BikeDTO bike,
+    public RepairOrderDTO createRepairOrder(CustomerDTO customer, BikeDTO bike,
                                             DiagnosticReportDTO problemDescription, int date) {
-        currentRepairOrder = new RepairOrder(repairOrderDTO, customer, bike, problemDescription, date);
+        currentRepairOrder = new RepairOrder(customer, bike, problemDescription, date);
         RepairOrderDTO dto = currentRepairOrder.getRepairOrderDTO();
         registryCreator.getRepairOrderRegistry().saveRepairOrder(dto);
         return dto;
@@ -76,9 +76,9 @@ public class Controller {
      * @param cost        The cost of the task in SEK.
      * @return The added {@link RepairTaskDTO}.
      */
-    public RepairTaskDTO addRepairTask(String name, String description, double cost) {
-        RepairTaskDTO task = new RepairTaskDTO(name, description, cost, true);
-        return currentRepairOrder.addRepairTask(task);
+    public RepairTaskDTO addRepairTask(String name, String description, double cost, boolean state) {
+        RepairTaskDTO task = new RepairTaskDTO(name, description, cost, state);
+        return task;
     }
 
     /**
@@ -88,7 +88,7 @@ public class Controller {
      * @param accepted {@code true} if the customer accepts, {@code false} if rejected.
      * @return The acceptance status that was set.
      */
-    public boolean acceptRepairOrder(boolean accepted) {
+    public enum setOrderStatus()) {
         currentRepairOrder.setAccepted(accepted);
         printer.printRepairOrder(currentRepairOrder.getRepairOrderDTO(), accepted);
         return accepted;
@@ -98,14 +98,15 @@ public class Controller {
 
     }
 
-    public upDateRepairOrder(){
+    public updateRepairOrder(){
 
     }
 
+    /**
+    * Prints the current repair order.
+    */
     public printRepairOrder(){
-        /**
-         * 
-         */
+
     }
 
     
