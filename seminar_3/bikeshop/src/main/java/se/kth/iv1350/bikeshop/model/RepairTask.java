@@ -18,6 +18,7 @@ public class RepairTask{
         private List<RepairTaskDTO> repairTasks;
     }
     
+    //createReapritask behövs men kasnke ska den vara i RepairOrderRegisrty
     
     /**
      * Adds a repair task cost to this repair order DTO and updates cost.

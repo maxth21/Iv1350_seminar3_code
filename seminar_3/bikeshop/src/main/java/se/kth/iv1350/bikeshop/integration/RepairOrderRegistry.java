@@ -12,20 +12,18 @@ import java.util.List;      // List = interface type (good practice: program to 
  * Stores repair orders in memory since no real database is used.
  */
 public class RepairOrderRegistry {
-
+    
+    private final List<RepairOrderDTO> repairOrderList;
     /**
      * Creates a new instance with an empty registry.
      */
     public RepairOrderRegistry() {
-        //lista med repairorders
-        private final List<RepairOrderDTO> repairOrders = new ArrayList<>();
-        RepairOrderDTO repairOrderDTO = new RepairOrderDTO(null, null, 0, 0, false, 0);
-        private List<RepairTaskDTO> repairTasks;
-
+        this.repairOrderList = new ArrayList<>();
+        //kolla om denna används i annan kod - ska den här vara i konstruktor
+        //RepairOrderDTO repairOrderDTO = new RepairOrderDTO(null, null, 0, 0, 0);
+        //private List<RepairTaskDTO> repairTasks;
 
     }                                     
-
-    private List<RepairTaskDTO> repairTasks;
     /**
      * Finds a repair order with the specified ID.
      *
@@ -60,6 +58,19 @@ public class RepairOrderRegistry {
         repairOrders.add(repairOrder); // Add to our in-memory list (replaces saving to a real database)
     }
 
-    //modev addRepairTask to RepairTask . java
+    /**
+     * Adds a repair task to the repair order with the specified ID.
+     *
+     * @param repairOrderId The ID of the repair order to update.
+     * @param repairTask    The {@link RepairTaskDTO} to add.
+     * @return The added {@link RepairTaskDTO}.
+     */
+    public RepairTaskDTO addRepairTask(String repairOrderId, RepairTaskDTO repairTask) {
+        RepairOrderDTO existing = findRepairOrder(repairOrderId); // Reuse findRepairOrder — avoids duplicated code (kap 6.4)
+        if (existing != null) {           // Only add if the repair order actually exists
+            existing.addRepairTask(repairTask); // Delegate to RepairOrderDTO to add the task
+        }
+        return repairTask; // Return the task so the caller can confirm what was added
+    }
 
 }

@@ -1,9 +1,6 @@
 package se.kth.iv1350.bikeshop.dto; // DTO layer — only holds data, no business logic
 
-import java.util.ArrayList; // ArrayList = resizable list, used to store repair tasks
-import java.util.List;      // List = interface type (good practice: program to interface)
-
-import se.kth.iv1350.bikeshop.model.RepairOrder.RepairOrderState;
+import se.kth.iv1350.bikeshop.model.RepairOrder.RepairOrderState; // ArrayList = resizable list, used to store repair tasks
 
 
 /**
@@ -16,7 +13,6 @@ public class RepairOrderDTO {
     /**
      * Hard-coded value for date in order to test the program
     */
-
     //public final int CURRENT_DATE = 260504;
 
     private final String repairOrderId;        // final = ID never changes after creation
@@ -37,7 +33,7 @@ public class RepairOrderDTO {
      * @param totalCost                 The total cost of all repair tasks
      */
 
-    public RepairOrderDTO(String repairOrderId, String problemDescription, int date, int estimatedCompletitionDate, boolean accepted, double totalCost) {
+    public RepairOrderDTO(CustomerDTO customerDTO, BikeDTO bikeDTO, String repairOrderId, String problemDescription, int date, int estimatedCompletitionDate, RepairOrderState STATE, double totalCost) {
         this.repairOrderId = repairOrderId;         // Store the unique order ID
         this.problemDescription = problemDescription; // Store the reported problem
         this.date = date;
