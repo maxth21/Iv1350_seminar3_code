@@ -5,9 +5,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
-
-import java.util.List;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -32,18 +29,56 @@ public class CustomerRegistryTest {
         Object ob = null;
         assertNotEquals(customers, ob, "should not be equal");
     }
-
+ 
     @Test
     public void testIfContainsCorrectSampleData(){       
-        CustomerRegistry customers = new CustomerRegistry();
-        customers.
+        
+        CustomerRegistry registry = new CustomerRegistry();
+        CustomerDTO customer = registry.findCustomer("0701234567");
+
+// Härifrån och nedåt bryr du dig inte längre om registryt
+
+        assertEquals("0701234567", customer.getPhoneNr());
+
+        
+        /*CustomerRegistry customers = new CustomerRegistry();
+        //customers.
         List<String> customerData = new ArrayList<>();
         customerData.add("Anna Svensson");
         customerData.add("0701234567");
         customerData.add("anna@mail.com");
         assertEquals(customers, customerData);
-
+*/
     }
+
+    
+    @Test
+    public void testIfContainsCorrectPhoneNr(){       
+        
+        CustomerRegistry registry = new CustomerRegistry();
+        CustomerDTO customer = registry.findCustomer("0701234567");
+
+        assertEquals("0701234567", customer.getPhoneNr());
+    }
+
+      @Test
+    public void testIfContainsCorrectName(){       
+        
+        CustomerRegistry registry = new CustomerRegistry();
+        CustomerDTO customer = registry.findCustomer("0701234567");
+
+        assertEquals("Anna Svensson", customer.getName());
+    }
+
+         @Test
+    public void testIfContainsCorrectEmail(){       
+        
+        CustomerRegistry registry = new CustomerRegistry();
+        CustomerDTO customer = registry.findCustomer("0701234567");
+
+        assertEquals("anna@mail.com", customer.getEmail());
+    }
+        
 
     @Test
     void testFindExistingCustomer() {
