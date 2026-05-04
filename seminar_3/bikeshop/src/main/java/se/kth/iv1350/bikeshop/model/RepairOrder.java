@@ -29,13 +29,15 @@ public class RepairOrder{
     //totalCostInMOdel är et fält som model behöver för att det vi skapar ska kunna fortsätta existera så länge objektet finns
     private double totalCostInModel;
 
+    private RepairOrderState state;
+
       
     //konstruktor av RO
-    public RepairOrder (List<RepairOrderDTO> repairOrderList){
+    public RepairOrder (List<RepairTaskDTO> repairTaskList){
         this.repairTasks = new ArrayList<>();
-        //ska den initeras som 0?
         this.totalCostInModel = 0.0; 
     }
+
     //getter method for totalCost
     public double TotalCostInModel (){
         return totalCostInModel;
@@ -45,6 +47,10 @@ public class RepairOrder{
     public List<RepairTaskDTO> getrepairTasks(){
         return repairTasks;
     } 
+    //get method for enum
+    public RepairOrderState getState(){
+        return state; 
+    }
 
 
         /**
@@ -81,29 +87,16 @@ public class RepairOrder{
         //save status with this.
     }
 
-        /**
-         *Changes the state of the repairOrder to accepted 
-         *  
-         * Marks accepted order as true,
-         * alternative flow as false or handled via exception later
-         */
-
-    //ska den verkligen returnera  boolean? eller ska den ändra state?
-    public boolean acceptedRepairOrder(String repairOrderID) {
-      
-        //RepairOrderDTO acceptRepairOrderDTO = new RepairOrderDTO(repairOrderID repairOrderID);
-        //skapa en lista av ett objekt
-        //loopa igenom repairorders och sätt den med sökt ID till acceppted
-        for(RepairOrderDTO foundMatchingRepairOrderID : repairOrders){
-            if(foundMatchingRepairOrderID.getRepairOrderId().equals(repairOrderID)){
-                //set accepted to true
-                setState(RepairOrderState);
-                //this.acceptOrder = true;
-            }
-        }
+    /**
+    *Changes the state of the repairOrder to accepted 
+    *  
+    * Marks accepted order as true,
+    * alternative flow as false or handled via exception later
+    */
+    public void changeStateOfRepairOrder(RepairOrderState state) {
+        this.state = state;
     }
     
-
     /**
      * adds a cost to the task 
      * @param addedRepairTask
