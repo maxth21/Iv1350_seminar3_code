@@ -7,8 +7,9 @@ import se.kth.iv1350.bikeshop.dto.RepairOrderDTO;
 import se.kth.iv1350.bikeshop.dto.RepairTaskDTO;
 import se.kth.iv1350.bikeshop.integration.Printer;
 import se.kth.iv1350.bikeshop.integration.RegistryCreator;
-import se.kth.iv1350.bikeshop.model.RepairOrder;
 import se.kth.iv1350.bikeshop.model.DiagnosticReport;
+import se.kth.iv1350.bikeshop.model.RepairOrder;
+import se.kth.iv1350.bikeshop.model.RepairOrder.RepairOrderState;
 
 
 /**
@@ -88,26 +89,30 @@ public class Controller {
      * @param accepted {@code true} if the customer accepts, {@code false} if rejected.
      * @return The acceptance status that was set.
      */
-    public enum setOrderStatus()) {
-        currentRepairOrder.setAccepted(accepted);
-        printer.printRepairOrder(currentRepairOrder.getRepairOrderDTO(), accepted);
-        return accepted;
+ 
+    public void setOrderStatus (RepairOrderState state) {
+        currentRepairOrder.setState(state);
+        printer.printRepairOrder(currentRepairOrder.getRepairOrderDTO(), state);
     }
 
     public DiagnosticReport addDiagnosticReport(){
 
     }
 
-    public updateRepairOrder(){
-
-    }
-
     /**
-    * Prints the current repair order.
-    */
-    public printRepairOrder(){
+     * Updates repairOrder when new info is added
+     */
+    public upDateRepairOrder(){
 
     }
-
-    
+    /**
+     * Printer is only triggered at the STATE change to accepted
+     */
+    public void printRepairOrder(RepairOrderDTO repairOrder, RepairOrderState state) {
+    if (state == RepairOrderState.ACCEPTED) {
+        // skriv ut
+        //call on method for prnter in integration
+        //somewhere: set state to PRINTED (?) after it has been printed in order to not trigger the printer method more than once
+        }    
+    }
 }

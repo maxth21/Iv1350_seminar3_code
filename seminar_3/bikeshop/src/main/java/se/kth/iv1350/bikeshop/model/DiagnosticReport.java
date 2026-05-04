@@ -21,7 +21,6 @@ public class DiagnosticReport {
      */
     public DiagnosticReport() {
     }
-
     /**
      * Adds a diagnostic report with the specified problem description.
      * An object is created using an reference to DiagnosticRepairDTO. 
@@ -35,13 +34,5 @@ public class DiagnosticReport {
         return new DiagnosticReportDTO(problemDescription);
     }
 
-    /**
-     * Returns a DTO representation of this diagnostic report.
-     * This method is used to show us that the program actually saves the report after adding.
-     *
-     * @return A {@link DiagnosticReportDTO} containing the diagnostic data.
-     */
-    public DiagnosticReportDTO showDiagnosticReport() {
-        return new DiagnosticReportDTO(problemDescription);
-    }
+   
 }

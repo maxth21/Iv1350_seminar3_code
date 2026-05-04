@@ -3,6 +3,9 @@ package se.kth.iv1350.bikeshop.dto; // DTO layer — only holds data, no busines
 import java.util.ArrayList; // ArrayList = resizable list, used to store repair tasks
 import java.util.List;      // List = interface type (good practice: program to interface)
 
+import se.kth.iv1350.bikeshop.model.RepairOrder.RepairOrderState;
+
+
 /**
  * Data transfer object for a repair order.
  * Used to transfer repair order data between layers without
@@ -21,20 +24,16 @@ public class RepairOrderDTO {
     private final int date;
     private int estimatedCompletionDate;
     private double totalCost;                   // NOT final = changes when repair tasks are added
-    private boolean accepted;                       // NOT final = changes when order is accepted/rejected
+    private RepairOrderState STATE;                       // NOT final = changes when order is accepted/rejected
    
     /**
-     * Creates a new instance with the specified repair order data.
-     * Initializes boolean accepted as false.
-     * Uses CURRENT_DATE as hardcoded value so that we cannot change the date after the object has been created.
-     * 
      * Creates a new instance with the specified repair order data
      *
      * @param repairOrderId             The unique ID of the repair order
      * @param problemDescription        A description of the reported problem
      * @param date                      The date where bike was recieved
      * @param estimatedCompletitionDate Estimated date for completing bike reparation
-     * @param accepted                  The current state of the repair order
+     * @param RepairOrderState                  The current state of the repair order
      * @param totalCost                 The total cost of all repair tasks
      */
 
@@ -43,9 +42,8 @@ public class RepairOrderDTO {
         this.problemDescription = problemDescription; // Store the reported problem
         this.date = date;
         this.estimatedCompletionDate = estimatedCompletitionDate;
-        this.accepted = accepted;                       // Store initial state (e.g. "created")
+        //this.ACCEPTED = ACCEPTED;                       // Store initial state (e.g. "created")
         this.totalCost = totalCost;                  // Store initial cost (usually 0.0 at creation)
-        this.accepted = false;                          // Store initial state (e.g. "created")
     }
 
 
@@ -74,8 +72,8 @@ public class RepairOrderDTO {
         return estimatedCompletionDate;
     }
     /** @return The current state of the repair order. */
-    public boolean getAccepted() {
-        return accepted;
+       public RepairOrderState getSTATE() {
+        return STATE;
     }
 
 }

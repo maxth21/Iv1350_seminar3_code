@@ -1,46 +1,40 @@
 package se.kth.iv1350.bikeshop.model;
 
 import se.kth.iv1350.bikeshop.dto.RepairTaskDTO;
+import se.kth.iv1350.bikeshop.dto.RepairOrderDTO;
+
+
 import java.util.List;
 import java.util.ArrayList;
 
-
 public class RepairTask{
 
-    private List<RepairTaskDTO> repairTasks;
-    
+    private double cost;
+    private double newCost;
 
-    /**
-     * Adds a repair task to this repair order DTO and updates cost.
-     *
-     * @param repairTask The {@link RepairTaskDTO} to add.
-     */
-    public RepairTaskDTO addRepairTask(RepairTaskDTO repairTask) {
-        repairTasks.add(repairTask);          // Add task to the list
-        totalCost += repairTask.getCost();    // Automatically update total cost when task is added
-    }
-
-    /**
-     * We want to set the individual cost 
-     * @param individualTaskCost
-     * @return
-     */
-     public RepairTaskDTO calculateTaskCost(RepairTaskDTO individualTaskCost){
-        double indTaskCost = getCost(RepairTaskDTO);
-        return RepairTaskDTO;
+    //constructor: empty
+    public RepairTask(){
+        RepairTask repairTask = new RepairTask();
+        private List<RepairTaskDTO> repairTasks;
     }
     
-
-
+    
     /**
-     * Constructor?
-     * @param createdRepairOrder
+     * Adds a repair task cost to this repair order DTO and updates cost.
+     * totalCost from RepairORderDto adds the cost of several RepairOrderTasks  
+     * 
+     * OBS Instansmetoder måste anropas på instanser, inte på klasser.
+     * 
+     * We want to set the individual cost to a chosen value.
+     * We can create a list of costs in integration and save them in RepairOrderRegistry
+     * This method can be used in the creation of a repairorder
+     * @param newCost is taken and refernced
      * @return
      */
-    public RepairTaskDTO createRepairTask(RepairTaskDTO createdRepairOrder){
-
+    public void setTaskCost(double newCost){
+        this.cost = newCost;
     }
-
+    
     //här behöver vi en testmetod som lägger till kostnaden etc.
 }
 

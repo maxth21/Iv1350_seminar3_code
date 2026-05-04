@@ -1,13 +1,13 @@
+package se.kth.iv1350.bikeshop.model;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import se.kth.iv1350.bikeshop.dto.RepairOrderDTO;
-import se.kth.iv1350.bikeshop.model.RepairTask;
-
-package se.kth.iv1350.bikeshop.model;
-
 import se.kth.iv1350.bikeshop.dto.RepairTaskDTO;
-import se.kth.iv1350.bikeshop.dto.BikeDTO; 
+import se.kth.iv1350.bikeshop.model.RepairTask;
+import se.kth.iv1350.bikeshop.dto.BikeDTO;
+import se.kth.iv1350.bikeshop.dto.CustomerDTO;
 import se.kth.iv1350.bikeshop.controller.Controller;
 
 /**
@@ -17,36 +17,37 @@ import se.kth.iv1350.bikeshop.controller.Controller;
 
 public class RepairOrder{ 
 
-    
-
-    private double totalCost = 0;
-    private String repairOrderInfo = " "; 
-    private List<RepairOrderDTO> RepairOrder;
-    
-    //konstruktor av RO
-    public RepairOrder (List<RepairOrderDTO> repairOrderList){
-
-        RepairTask RepairTasks = new RepairTask();
-
-        //skapa en lista med repairtasks
-        List<RepairTask> repairTasksList = new ArrayList<>();
-
-        //lista med repairorders
-        List<RepairOrderDTO> repairOrdersList = new ArrayList<>();
-
-
+    public enum RepairOrderState {
+        NEWLY_CREATED,
+        READY_FOR_APPROVAL,
+        REJECTED,
+        ACCEPTED
     }
 
+    //list of repairtasks
+    private List<RepairTaskDTO> repairTasks;
+    //totalCostInMOdel är et fält som model behöver för att det vi skapar ska kunna fortsätta existera så länge objektet finns
+    private double totalCostInModel;
 
-    public void updateRepairOrder(RepairOrderDTO repairOrderID) {    
+      
+    //konstruktor av RO
+    public RepairOrder (List<RepairOrderDTO> repairOrderList){
+        this.repairTasks = new ArrayList<>();
+        //ska den initeras som 0?
+        this.totalCostInModel = 0.0; 
+    }
+    //getter method for totalCost
+    public double TotalCostInModel (){
+        return totalCostInModel;
+    }
         /**
         * updateRepairOrder is used when the RO needs to be updated and saved.
         * method addRepairTasks is using this method in order to be able to add tasks. 
         **/
+    public void updateRepairOrder(RepairOrderDTO repairOrderID) {    
+       
     }
-
-    public void calculateTotalCost(){ 
-        /**
+    /**
         * Calculates total cost depending in on the repairTasks, which have separate costs
         * The field represetning totalCost needs to be updated, and remembered inside this object
         * This is void because the method is a command and changes the state of the field,
@@ -57,6 +58,7 @@ public class RepairOrder{
         *
         *No parameters.
         */
+    public void calculateTotalCost(){ 
        //lägg till repairstask
        //uppdatera total cost
        //ändra status
@@ -72,8 +74,6 @@ public class RepairOrder{
         //save status with this.
     }
 
-    //ska den verkligen returnera  boolean? eller ska den ändra state?
-    public boolean acceptedRepairOrder(String repairOrderID) {
         /**
          *Changes the state of the repairOrder to accepted 
          *  
@@ -81,32 +81,28 @@ public class RepairOrder{
          * alternative flow as false or handled via exception later
          */
 
+    //ska den verkligen returnera  boolean? eller ska den ändra state?
+    public boolean acceptedRepairOrder(String repairOrderID) {
+      
         //RepairOrderDTO acceptRepairOrderDTO = new RepairOrderDTO(repairOrderID repairOrderID);
-
         //skapa en lista av ett objekt
-        
         //loopa igenom repairorders och sätt den med sökt ID till acceppted
         for(RepairOrderDTO foundMatchingRepairOrderID : repairOrders){
             if(foundMatchingRepairOrderID.getRepairOrderId().equals(repairOrderID)){
                 //set accepted to true
-                RepairOrder.getAccepted();
-                //this.
+                setState(RepairOrderState);
+                //this.acceptOrder = true;
             }
         }
     }
-/*        boolean acceptOrder = getAccepted(repairOrderDTO);
-        this.acceptOrder = true;4
-
-
-       return this.acceptOrder(repairOrderID);
-    }
-
- */
-
-    public createRepairOrder (repairOrderId, customerDTO) {
-        /**
-        * Creates a new repairorder linked to customer and stores in DTO
-        */
-    }
     
+
+    /**
+     * adds a cost to the task 
+     * @param addedRepairTask
+     */
+    public void addRepairTaskCost(RepairTaskDTO addedRepairTask) {
+        totalCostInModel += addedRepairTask.getCost();    // Automatically update total cost when task is added
+    }
+
 }

@@ -4,6 +4,7 @@ import se.kth.iv1350.bikeshop.dto.BikeDTO;
 import se.kth.iv1350.bikeshop.dto.CustomerDTO;
 import se.kth.iv1350.bikeshop.dto.RepairOrderDTO;
 import se.kth.iv1350.bikeshop.dto.RepairTaskDTO;
+import se.kth.iv1350.bikeshop.model.RepairOrder.RepairOrderState;
 
 /**
  * Handles printing of repair orders.
@@ -24,7 +25,8 @@ public class Printer {
      */
     public void printRepairOrder(PrinterParameters param) { //behöver skapa ett objekt av param i controllern där man vet vilka inparamterar som ska in.
 
-        if(param.accepted = true){
+    public void printRepairOrder(RepairOrderDTO repairOrder, CustomerDTO customer, BikeDTO bike, RepairTaskDTO repairTask, boolean accepted) {
+        if(RepairOrderState = ACCEPTED){
             System.out.println("\n=== REPAIR ORDER ===");
             System.out.println("Order ID  : " + param.getRepairOrderId());
             System.out.println("Customer  : " + param.customer.getName());

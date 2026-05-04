@@ -6,10 +6,6 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
-
-import java.util.List;
-import java.util.ArrayList;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -41,18 +37,35 @@ public class CustomerRegistryTest {
         List<String> customerData = new ArrayList<>();   
         assertFalse(customer.equals(customerData));
     }
+ 
 
     @Test
-    public void testIfContainsCorrectSampleData(){       
-        CustomerRegistry customers = new CustomerRegistry();
-        List<String> existingCustomer = customers.findCustomer("0701234567")();
-        List<String> customerData = new ArrayList<>();
-        customerData.add("Anna Svensson");
-        customerData.add("0701234567");
-        customerData.add("anna@mail.com");
-        assertEquals(customerData, existingCustomer, "Customer registry should contain correct sample data");
+    public void testIfContainsCorrectPhoneNr(){       
+        
+        CustomerRegistry registry = new CustomerRegistry();
+        CustomerDTO customer = registry.findCustomer("0701234567");
 
+        assertEquals("0701234567", customer.getPhoneNr());
     }
+
+      @Test
+    public void testIfContainsCorrectName(){       
+        
+        CustomerRegistry registry = new CustomerRegistry();
+        CustomerDTO customer = registry.findCustomer("0701234567");
+
+        assertEquals("Anna Svensson", customer.getName());
+    }
+
+         @Test
+    public void testIfContainsCorrectEmail(){       
+        
+        CustomerRegistry registry = new CustomerRegistry();
+        CustomerDTO customer = registry.findCustomer("0701234567");
+
+        assertEquals("anna@mail.com", customer.getEmail());
+    }
+        
 
     @Test
     void testFindExistingCustomer() {

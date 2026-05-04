@@ -2,6 +2,8 @@ package se.kth.iv1350.bikeshop.integration; // Integration layer — simulates r
 
 import se.kth.iv1350.bikeshop.dto.RepairOrderDTO; // DTO for passing repair order data between layers
 import se.kth.iv1350.bikeshop.dto.RepairTaskDTO;  // DTO for passing repair task data between layers
+import se.kth.iv1350.bikeshop.model.RepairTask;
+
 import java.util.ArrayList; // ArrayList = resizable list, used as our in-memory database
 import java.util.List;      // List = interface type (good practice: program to interface, not implementation)
 
@@ -11,16 +13,19 @@ import java.util.List;      // List = interface type (good practice: program to 
  */
 public class RepairOrderRegistry {
 
-    private final List<RepairOrderDTO> repairOrders; // final = list reference never changes, only its contents
-                                                     // private = encapsulation, no other class can access directly
-
     /**
      * Creates a new instance with an empty registry.
      */
     public RepairOrderRegistry() {
-        repairOrders = new ArrayList<>(); // Start empty — orders are added during program execution
-    }                                     // No sample data needed here, unlike CustomerRegistry
+        //lista med repairorders
+        private final List<RepairOrderDTO> repairOrders = new ArrayList<>();
+        RepairOrderDTO repairOrderDTO = new RepairOrderDTO(null, null, 0, 0, false, 0);
+        private List<RepairTaskDTO> repairTasks;
 
+
+    }                                     
+
+    private List<RepairTaskDTO> repairTasks;
     /**
      * Finds a repair order with the specified ID.
      *
@@ -29,7 +34,7 @@ public class RepairOrderRegistry {
      *         repair order with the given ID exists.
      */
     public RepairOrderDTO findRepairOrder(String repairOrderId) {
-        for (RepairOrderDTO repairOrder : repairOrders) {        // Loop through every saved repair order
+        for (RepairOrderDTO repairOrder : repairOrderId) {        // Loop through every saved repair order
             if (repairOrder.getRepairOrderId().equals(repairOrderId)) { // .equals() for String comparison (never == for Strings!)
                 return repairOrder;                              // Match found — return it immediately
             }
@@ -55,18 +60,6 @@ public class RepairOrderRegistry {
         repairOrders.add(repairOrder); // Add to our in-memory list (replaces saving to a real database)
     }
 
-    /**
-     * Adds a repair task to the repair order with the specified ID.
-     *
-     * @param repairOrderId The ID of the repair order to update.
-     * @param repairTask    The {@link RepairTaskDTO} to add.
-     * @return The added {@link RepairTaskDTO}.
-     */
-    public RepairTaskDTO addRepairTask(String repairOrderId, RepairTaskDTO repairTask) {
-        RepairOrderDTO existing = findRepairOrder(repairOrderId); // Reuse findRepairOrder — avoids duplicated code (kap 6.4)
-        if (existing != null) {           // Only add if the repair order actually exists
-            existing.addRepairTask(repairTask); // Delegate to RepairOrderDTO to add the task
-        }
-        return repairTask; // Return the task so the caller can confirm what was added
-    }
+    //modev addRepairTask to RepairTask . java
+
 }
