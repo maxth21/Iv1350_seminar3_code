@@ -7,8 +7,6 @@ import se.kth.iv1350.bikeshop.dto.RepairOrderDTO;
 import se.kth.iv1350.bikeshop.dto.RepairTaskDTO;
 import se.kth.iv1350.bikeshop.model.RepairOrder.RepairOrderState;
 
-
-
 /**
  * The application's only view.
  * Simulates the user interface by making hard-coded calls to the controller
@@ -28,18 +26,18 @@ public class View {
     }
 
     /**
-     * Runs the simulated basic flow for the "Repair Electric Bike" use case.
+     * Runs the simulated basic flow for the Repair Electric Bike use case.
      * Prints everything returned by the controller.
      */
     public void run() {
         System.out.println("--- Step 1: Search for customer ---");
-        CustomerDTO customer = controller.searchCustomerByPhoneNr("0701234567");
+        CustomerDTO customer = controller.searchCustomer("0701234567");
         System.out.println("Customer name  : " + customer.getName());
         System.out.println("Customer phone : " + customer.getPhoneNr());
         System.out.println("Customer email : " + customer.getEmail());
 
         System.out.println("\n--- Step 2: Search for bike ---");
-        BikeDTO bike = controller.searchBikeByPhoneNr("0701234567");
+        BikeDTO bike = controller.searchBike("0701234567");
         System.out.println("Bike brand  : " + bike.getBrand());
         System.out.println("Bike model  : " + bike.getModel());
         System.out.println("Serial nr   : " + bike.getSerialNr());
@@ -49,7 +47,7 @@ public class View {
         System.out.println("Order ID    : " + order.getRepairOrderId());
         System.out.println("Problem     : " + order.getProblemDescription());
         System.out.println("Total cost  : " + order.getTotalCost() + " kr");
-        System.out.println("Accepted    : " + order.getSTATE());
+        System.out.println("Status      : " + order.getSTATE());
 
         System.out.println("\n--- Step 4: Add repair tasks ---");
         RepairTaskDTO task1 = controller.addRepairTask(
@@ -67,8 +65,7 @@ public class View {
         System.out.println("Total cost so far: " + order.getTotalCost() + " kr");
 
         System.out.println("\n--- Step 5: Customer accepts repair order ---");
-        //handel enum here
-        RepairOrderState accepted = controller.setOrderStatus(ACCEPTED);
-        System.out.println("Accepted    : " + accepted);
+        controller.setOrderStatus(RepairOrderState.ACCEPTED);
+        System.out.println("Status set to: ACCEPTED");
     }
 }

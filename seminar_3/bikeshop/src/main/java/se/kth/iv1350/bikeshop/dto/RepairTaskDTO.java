@@ -1,60 +1,40 @@
 package se.kth.iv1350.bikeshop.dto;
 
-import se.kth.iv1350.bikeshop.model.RepairOrder.RepairOrderState;
-
 /**
- * This is a DTO holding information about Repair Task
+ * Data transfer object for a single repair task.
+ * Used to pass repair task data between layers without exposing model internals.
  */
+public class RepairTaskDTO {
 
-public class RepairTaskDTO{
-    private String name;
-    private String description;
-    private double cost;
-    private RepairOrderState STATE;                       // NOT final = changes when order is accepted/rejected
+    private final String name;
+    private final String description;
+    private final double cost;
 
     /**
-     * constructor for creating a repair task
-     * @param name      
-     * @param description   description of repair task
-     * @param cost          the cost for reparation of task
-     * @param state         if the repair task is fixed or not
+     * Creates a new repair task DTO.
+     *
+     * @param name        The name of the repair task.
+     * @param description A description of the work involved.
+     * @param cost        The cost of the task in SEK.
      */
-
-    public RepairTaskDTO(String name, String description, double cost, boolean state){
+    public RepairTaskDTO(String name, String description, double cost) {
         this.name = name;
         this.description = description;
         this.cost = cost;
     }
 
-    /**
-     * get method for 
-     * @return
-     */
-    public String getName(){
+    /** @return The name of the repair task. */
+    public String getName() {
         return name;
     }
 
-    /**
-     * get method for problem description
-     * @return
-     */
-    public String getDescription(){
+    /** @return A description of the work involved. */
+    public String getDescription() {
         return description;
     }
 
-    /**
-     * get method for cost
-     * @return the cost of the repair task
-     */
-    public double getCost(){
+    /** @return The cost of the task in SEK. */
+    public double getCost() {
         return cost;
-    }
-
-    /**
-     * get method for state
-     * @return the state of the repairtask. If it is finished or not
-     */
-    public boolean getState(){
-        return state;
     }
 }
