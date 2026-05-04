@@ -18,19 +18,20 @@ public class Printer {
     public Printer() {
     }
 
-    PrinterParameters param = new PrinterParameters(null, null, null, null, false)
     /**
      * Prints the specified repair order to {@link System#out}.
      *
      * @param repairOrder The {@link RepairOrderDTO} to print.
      */
+    public void printRepairOrder(PrinterParameters param) { //behöver skapa ett objekt av param i controllern där man vet vilka inparamterar som ska in.
+
     public void printRepairOrder(RepairOrderDTO repairOrder, CustomerDTO customer, BikeDTO bike, RepairTaskDTO repairTask, boolean accepted) {
         if(RepairOrderState = ACCEPTED){
             System.out.println("\n=== REPAIR ORDER ===");
-            System.out.println("Order ID  : " + repairOrder.getRepairOrderId());
-            System.out.println("Customer  : " + customer.getName());
-            System.out.println("Phone     : " + customer.getPhoneNr());
-            System.out.println("Bike      : " + bike.getBrand()
+            System.out.println("Order ID  : " + param.getRepairOrderId());
+            System.out.println("Customer  : " + param.customer.getName());
+            System.out.println("Phone     : " + param.customergetPhoneNr());
+            System.out.println("Bike      : " + param.getBrand()
                     + " " + bike.getModel()
                     + " (S/N: " + bike.getSerialNr() + ")");
             System.out.println("Problem   : " + repairOrder.getProblemDescription());
