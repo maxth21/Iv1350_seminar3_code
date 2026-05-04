@@ -36,7 +36,7 @@ public class PrinterParameters {
     }
 
     public RepairOrder getRepairTasksList(){
-        return repairOrder.getRepairTasks();
+        return repairOrder;
     }
 
     public CustomerDTO getCustomer(){
