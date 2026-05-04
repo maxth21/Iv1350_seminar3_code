@@ -13,9 +13,6 @@ import se.kth.iv1350.bikeshop.dto.CustomerDTO;
 
 public class CustomerRegistryTest {
     
-    //Test that the list is created 
-    //Test that the list is empty
-    //Test that addSampleData adds sample data
     private CustomerRegistry registry;
     
     @BeforeEach
@@ -30,7 +27,6 @@ public class CustomerRegistryTest {
         assertNotEquals(customers, ob, "should not be equal");
     }
  
-
     @Test
     public void testIfContainsCorrectPhoneNr(){       
         
