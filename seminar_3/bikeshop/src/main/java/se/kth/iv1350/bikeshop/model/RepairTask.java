@@ -17,9 +17,7 @@ public class RepairTask{
         RepairTask repairTask = new RepairTask();
         private List<RepairTaskDTO> repairTasks;
     }
-    
-    //createReapritask behövs men kasnke ska den vara i RepairOrderRegisrty
-    
+      
     /**
      * Adds a repair task cost to this repair order DTO and updates cost.
      * totalCost from RepairORderDto adds the cost of several RepairOrderTasks  
@@ -31,12 +29,15 @@ public class RepairTask{
      * This method can be used in the creation of a repairorder
      * @param newCost is taken and refernced
      * @return
-     */
+     */ 
     public void setTaskCost(double newCost){
         this.cost = newCost;
     }
     
-    //här behöver vi en testmetod som lägger till kostnaden etc.
+    public void addRepairTask(String newTask){
+        repairTasks.add(newTask);
+    } 
+
 }
 
 
