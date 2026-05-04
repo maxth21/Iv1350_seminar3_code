@@ -2,6 +2,8 @@ package se.kth.iv1350.bikeshop.integration; // Integration layer — simulates r
 
 import se.kth.iv1350.bikeshop.dto.RepairOrderDTO; // DTO for passing repair order data between layers
 import se.kth.iv1350.bikeshop.dto.RepairTaskDTO;  // DTO for passing repair task data between layers
+import se.kth.iv1350.bikeshop.model.RepairTask;
+
 import java.util.ArrayList; // ArrayList = resizable list, used as our in-memory database
 import java.util.List;      // List = interface type (good practice: program to interface, not implementation)
 
@@ -17,8 +19,13 @@ public class RepairOrderRegistry {
     public RepairOrderRegistry() {
         //lista med repairorders
         private final List<RepairOrderDTO> repairOrders = new ArrayList<>();
+        RepairOrderDTO repairOrderDTO = new RepairOrderDTO(null, null, 0, 0, false, 0);
+        private List<RepairTaskDTO> repairTasks;
+
+
     }                                     
 
+    private List<RepairTaskDTO> repairTasks;
     /**
      * Finds a repair order with the specified ID.
      *
@@ -27,7 +34,7 @@ public class RepairOrderRegistry {
      *         repair order with the given ID exists.
      */
     public RepairOrderDTO findRepairOrder(String repairOrderId) {
-        for (RepairOrderDTO repairOrder : repairOrders) {        // Loop through every saved repair order
+        for (RepairOrderDTO repairOrder : repairOrderId) {        // Loop through every saved repair order
             if (repairOrder.getRepairOrderId().equals(repairOrderId)) { // .equals() for String comparison (never == for Strings!)
                 return repairOrder;                              // Match found — return it immediately
             }

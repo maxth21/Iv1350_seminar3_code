@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import se.kth.iv1350.bikeshop.dto.RepairOrderDTO;
+import se.kth.iv1350.bikeshop.dto.RepairTaskDTO;
 import se.kth.iv1350.bikeshop.model.RepairTask;
 
 package se.kth.iv1350.bikeshop.model;
@@ -17,25 +18,24 @@ import se.kth.iv1350.bikeshop.controller.Controller;
 
 public class RepairOrder{ 
 
-    
-
-    private double totalCost = 0;
-    private String repairOrderInfo = " "; 
-    private List<RepairOrderDTO> RepairOrder;
-
     public enum RepairOrderState {
         NEWLY_CREATED,
         READY_FOR_APPROVAL,
         REJECTED,
         ACCEPTED
     }
-    
+
+    private double totalCost = 0;
+    private String repairOrderInfo = " "; 
+    private List<RepairOrderDTO> RepairOrder;
+//list of repairtasks
+    private List<RepairTaskDTO> repairTasks;
+
+      
     //konstruktor av RO
     public RepairOrder (List<RepairOrderDTO> repairOrderList){
-
-        RepairTask RepairTasks = new RepairTask();
-        //skapa en lista med repairtasks
-        List<RepairTask> repairTasksList = new ArrayList<>();
+        this.repairTasks = new ArrayList<>();
+        this.totalCost = 0.0; 
     }
 
         /**
@@ -100,5 +100,31 @@ public class RepairOrder{
         */
     public createRepairOrder (RepairOrderDTO repairOrder ) {
 
+    }
+    
+    /**
+     * adds a cost to the task
+     * @param addedRepairTask
+     */
+    public void addRepairTaskCost(RepairTaskDTO addedRepairTask) {
+        this.totalCost = repairOrderDTO.getTotalCost();
+        repairTasks.add(addedRepairTask);          // Add task to the list
+        totalCost += addedRepairTask.getCost();    // Automatically update total cost when task is added
+    }
+
+    /**
+     * Adds a repair task to the repair order with the specified ID.
+     * OBS -- search occurs via ID and handels sav -- move to integration?
+     *
+     * @param repairOrderId The ID of the repair order to update.
+     * @param repairTask    The {@link RepairTaskDTO} to add.
+     * @return The added {@link RepairTaskDTO}.
+     */
+    public RepairTaskDTO addRepairTask(String repairOrderId, RepairTaskDTO repairTask) {
+        RepairOrderDTO existing = findRepairOrder(repairOrderId); // Reuse findRepairOrder — avoids duplicated code (kap 6.4)
+        if (existing != null) {           // Only add if the repair order actually exists
+            existing.addRepairTask(repairTask); // Delegate to RepairOrderDTO to add the task
+        }
+        return repairTask; // Return the task so the caller can confirm what was added
     }
 }

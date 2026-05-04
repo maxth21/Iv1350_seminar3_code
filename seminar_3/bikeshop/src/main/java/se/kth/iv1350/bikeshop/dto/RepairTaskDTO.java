@@ -1,5 +1,7 @@
 package se.kth.iv1350.bikeshop.dto;
 
+import se.kth.iv1350.bikeshop.model.RepairOrder.RepairOrderState;
+
 /**
  * This is a DTO holding information about Repair Task
  */
@@ -8,7 +10,7 @@ public class RepairTaskDTO{
     private String name;
     private String description;
     private double cost;
-    private boolean state;
+    private RepairOrderState STATE;                       // NOT final = changes when order is accepted/rejected
 
     /**
      * constructor for creating a repair task
@@ -22,7 +24,6 @@ public class RepairTaskDTO{
         this.name = name;
         this.description = description;
         this.cost = cost;
-        this.state = state;
     }
 
     /**
