@@ -1,40 +1,60 @@
 package se.kth.iv1350.bikeshop.dto;
 
-/**
- * Data transfer object for a single repair task.
- * Used to pass repair task data between layers without exposing model internals.
- */
-public class RepairTaskDTO {
+import se.kth.iv1350.bikeshop.model.RepairOrder.RepairOrderState;
 
-    private final String name;
-    private final String description;
-    private final double cost;
+/**
+ * This is a DTO holding information about Repair Task
+ */
+
+public class RepairTaskDTO{
+    private String name;
+    private String description;
+    private double cost;
+    private RepairOrderState STATE;                       // NOT final = changes when order is accepted/rejected
 
     /**
-     * Creates a new repair task DTO.
-     *
-     * @param name        The name of the repair task.
-     * @param description A description of the work involved.
-     * @param cost        The cost of the task in SEK.
+     * constructor for creating a repair task
+     * @param name      
+     * @param description   description of repair task
+     * @param cost          the cost for reparation of task
+     * @param state         if the repair task is fixed or not
      */
-    public RepairTaskDTO(String name, String description, double cost) {
+
+    public RepairTaskDTO(String name, String description, double cost, boolean state){
         this.name = name;
         this.description = description;
         this.cost = cost;
     }
 
-    /** @return The name of the repair task. */
-    public String getName() {
+    /**
+     * get method for 
+     * @return
+     */
+    public String getName(){
         return name;
     }
 
-    /** @return A description of the work involved. */
-    public String getDescription() {
+    /**
+     * get method for problem description
+     * @return
+     */
+    public String getDescription(){
         return description;
     }
 
-    /** @return The cost of the task in SEK. */
-    public double getCost() {
+    /**
+     * get method for cost
+     * @return the cost of the repair task
+     */
+    public double getCost(){
         return cost;
+    }
+
+    /**
+     * get method for state
+     * @return the state of the repairtask. If it is finished or not
+     */
+    public boolean getState(){
+        return state;
     }
 }

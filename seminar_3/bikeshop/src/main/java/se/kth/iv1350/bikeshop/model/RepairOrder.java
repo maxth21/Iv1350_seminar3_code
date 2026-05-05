@@ -1,19 +1,17 @@
 package se.kth.iv1350.bikeshop.model;
 
-import se.kth.iv1350.bikeshop.dto.BikeDTO;
-import se.kth.iv1350.bikeshop.dto.CustomerDTO;
-import se.kth.iv1350.bikeshop.dto.RepairOrderDTO;
+import java.util.ArrayList;
+import java.util.List;
+
 import se.kth.iv1350.bikeshop.dto.RepairTaskDTO;
 
 /**
- * Represents a repair order in the system.
- * Manages the state and repair tasks of the order.
+ * RepairOrders are handled in this class.
+ * Needs to import all DTO classes, RepairTask, registries! check how to import 
  */
-public class RepairOrder {
 
-    /**
-     * The possible states of a repair order throughout its lifecycle.
-     */
+public class RepairOrder{ 
+
     public enum RepairOrderState {
         NEWLY_CREATED,
         READY_FOR_APPROVAL,
@@ -21,56 +19,60 @@ public class RepairOrder {
         ACCEPTED
     }
 
-    private static int orderCounter = 1;
-    private final RepairOrderDTO repairOrderDTO;
+    //list of repairtasks
+    private List<RepairTaskDTO > repairTasks;
+    //totalCostInMOdel är et fält som model behöver för att det vi skapar ska kunna fortsätta existera så länge objektet finns
+    private double totalCostInModel;
 
-    /**
-     * Creates a new repair order for the specified customer and bike.
-     *
-     * @param customer           The customer who owns the bike.
-     * @param bike               The bike to be repaired.
-     * @param problemDescription A description of the reported problem.
-     */
-    public RepairOrder(CustomerDTO customer, BikeDTO bike, String problemDescription) {
-        String orderId = "RO-" + String.format("%03d", orderCounter++);
-        this.repairOrderDTO = new RepairOrderDTO(orderId, problemDescription, 260504, customer, bike);
+    private RepairOrderState state;
+
+      
+    //konstruktor av RO
+    public RepairOrder (List<RepairTaskDTO> repairTaskList){
+        this.repairTasks = new ArrayList<>();
+        this.totalCostInModel = 0.0; 
     }
 
-    /**
-     * Returns a DTO representation of this repair order.
-     *
-     * @return The {@link RepairOrderDTO} for this order.
-     */
-    public RepairOrderDTO getRepairOrderDTO() {
-        return repairOrderDTO;
+    //getter method for totalCost
+    public double TotalCostInModel (){
+        return totalCostInModel;
     }
 
-    /**
-     * Adds a repair task to this order and returns it.
-     *
-     * @param task The {@link RepairTaskDTO} to add.
-     * @return The added task.
-     */
-    public RepairTaskDTO addRepairTask(RepairTaskDTO task) {
-        repairOrderDTO.addRepairTask(task);
-        return task;
+    //getter for repairstasks list
+    public List<RepairTaskDTO> getrepairTasks(){
+        return repairTasks;
+    } 
+    //get method for enum
+    public RepairOrderState getState(){
+        return state; 
     }
 
+
+    
     /**
-     * Sets the state of this repair order.
-     *
-     * @param state The new {@link RepairOrderState}.
+    *Returns the total cost of repairtasks, which are calculated by addRepairTask 
+    * 
+    */
+    public double readTotalCost(RepairTask newTask){ 
+        return totalCostInModel;
+    }
+        
+    /**
+    *Changes the state of the repairOrder to accepted 
+    *  
+    * Marks accepted order as true,
+    * alternative flow as false or handled via exception later
+    */
+    public void changeStateOfRepairOrder(RepairOrderState state) {
+        this.state = state;
+    }
+    
+    /**
+     * adds a cost to the task 
+     * @param addedRepairTask
      */
-    public void setState(RepairOrderState state) {
-        repairOrderDTO.setState(state);
+    public void addRepairTaskCost(RepairTaskDTO addedRepairTask) {
+        totalCostInModel += addedRepairTask.getCost();    // Automatically update total cost when task is added
     }
 
-    /**
-     * Returns the current state of this repair order.
-     *
-     * @return The current {@link RepairOrderState}.
-     */
-    public RepairOrderState getState() {
-        return repairOrderDTO.getSTATE();
-    }
 }

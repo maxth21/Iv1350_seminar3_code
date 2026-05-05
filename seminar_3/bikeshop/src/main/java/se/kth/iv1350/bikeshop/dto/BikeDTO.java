@@ -1,48 +1,51 @@
 package se.kth.iv1350.bikeshop.dto;
 
 /**
- * Data transfer object for a bike.
- * Used to pass bike data between layers without exposing model internals.
+ * This is a DTO for information about the Bike
  */
-public class BikeDTO {
 
+public class BikeDTO{
     private final String brand;
     private final String model;
     private final String serialNr;
-    private final String ownerPhoneNr;
 
     /**
-     * Creates a new bike DTO.
-     *
-     * @param brand        The manufacturer of the bike.
-     * @param model        The model name.
-     * @param serialNr     The unique serial number.
-     * @param ownerPhoneNr The phone number of the customer who owns the bike.
+     * Constructor for class BikeDTO
+     * @param brand The company that makes the bike
+     * @param model The model created by the company
+     * @param serialNr An identifying number for specific bike
      */
-    public BikeDTO(String brand, String model, String serialNr, String ownerPhoneNr) {
+
+    public BikeDTO(String brand, String model, String serialNr){
         this.brand = brand;
         this.model = model;
         this.serialNr = serialNr;
-        this.ownerPhoneNr = ownerPhoneNr;
     }
 
-    /** @return The manufacturer of the bike. */
-    public String getBrand() {
+    /**
+     * Get method for returning the brand
+     * @return brand
+     */
+
+    public String getBrand(){
         return brand;
     }
 
-    /** @return The model name. */
-    public String getModel() {
+    /**
+     * Get method for returning the model
+     * @return model
+     */
+
+    public String getModel(){
         return model;
     }
 
-    /** @return The unique serial number. */
-    public String getSerialNr() {
-        return serialNr;
-    }
+    /**
+     * Get method for returning the serial number
+     * @return serialNr
+     */
 
-    /** @return The phone number of the customer who owns this bike. */
-    public String getOwnerPhoneNr() {
-        return ownerPhoneNr;
+    public String getSerialNr(){
+        return serialNr;
     }
 }
