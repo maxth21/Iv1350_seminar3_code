@@ -77,6 +77,7 @@ public class Controller {
      * @param description A description of the work involved.
      * @param cost        The cost of the task in SEK.
      * @return The added {@link RepairTaskDTO}.
+     * 
      */
     public RepairTaskDTO addRepairTask(String name, String description, double cost) {
         RepairTaskDTO task = new RepairTaskDTO(name, description, cost, true);
@@ -182,9 +183,9 @@ public class Controller {
      * @param problemDescription A description of the reported problem.
      * @return A {@link RepairOrderDTO} representing the created order.
      */
-    public RepairOrderDTO createRepairOrder(CustomerDTO customer, BikeDTO bike,
+    public RepairOrderDTO createRepairOrder(RepairOrderDTO repairOrderDTO, CustomerDTO customer, BikeDTO bike,
                                             DiagnosticReportDTO problemDescription, int date) {
-        currentRepairOrder = new RepairOrder(customer, bike, problemDescription, date);
+        currentRepairOrder = new RepairOrder(repairOrderDTO, customer, bike, problemDescription, date);
         RepairOrderDTO dto = currentRepairOrder.getRepairOrderDTO();
         registryCreator.getRepairOrderRegistry().saveRepairOrder(dto);
         return dto;
@@ -216,7 +217,7 @@ public class Controller {
         printer.printRepairOrder(currentRepairOrder.getRepairOrderDTO(), state);
     }
 
-    public DiagnosticReport addDiagnosticReport(){
+    public DiagnosticReport addDiagnosticReport(){ 
 
     }
 
