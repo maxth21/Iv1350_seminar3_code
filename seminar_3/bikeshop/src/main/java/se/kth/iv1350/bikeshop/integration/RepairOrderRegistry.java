@@ -46,7 +46,7 @@ public class RepairOrderRegistry {
      * @return A {@link List} of all {@link RepairOrderDTO} objects.
      */
     public List<RepairOrderDTO> findAllRepairOrders() {
-        return new ArrayList<>(repairOrders); // Return a COPY of the list — protects encapsulation
+        return new ArrayList<>(repairOrderList); // Return a COPY of the list — protects encapsulation
     }                                         // Caller cannot modify our internal list this way
 
     /**
@@ -55,7 +55,7 @@ public class RepairOrderRegistry {
      * @param repairOrder The {@link RepairOrderDTO} to save.
      */
     public void saveRepairOrder(RepairOrderDTO repairOrder) {
-        repairOrders.add(repairOrder); // Add to our in-memory list (replaces saving to a real database)
+        repairOrderList.add(repairOrder); // Add to our in-memory list (replaces saving to a real database)
     }
 
     /**
