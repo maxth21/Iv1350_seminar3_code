@@ -1,6 +1,6 @@
 package se.kth.iv1350.bikeshop.dto;
 
-import se.kth.iv1350.bikeshop.model.RepairOrder.RepairOrderState;
+import se.kth.iv1350.bikeshop.model.RepairOrder;
 
 /**
  * This is a DTO holding information about Repair Task
@@ -20,7 +20,7 @@ public class RepairTaskDTO{
      * @param state         if the repair task is fixed or not
      */
 
-    public RepairTaskDTO(String name, String description, double cost, boolean state){
+    public RepairTaskDTO(String name, String description, double cost){
         this.name = name;
         this.description = description;
         this.cost = cost;

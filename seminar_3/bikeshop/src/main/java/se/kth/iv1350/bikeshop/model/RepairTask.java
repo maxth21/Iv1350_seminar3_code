@@ -7,6 +7,8 @@ import se.kth.iv1350.bikeshop.dto.RepairOrderDTO;
 import java.util.List;
 import java.util.ArrayList;
 
+//OBS vi tar bort denna filen - allt vi behöver finns i DTO. Klassen är borttagen från digrammet
+
 public class RepairTask{
 
     private double cost;
@@ -34,6 +36,10 @@ public class RepairTask{
         this.cost = newCost;
     }
     
+    /**
+     * ska köras när man lägger till en task ska 
+     * @param newTask
+     */
     public void addRepairTask(String newTask){
         repairTasks.add(newTask);
     } 
