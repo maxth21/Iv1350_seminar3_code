@@ -21,14 +21,14 @@ public class PrinterParameters {
         CustomerDTO customerDTO,
         BikeDTO bikeDTO,
         RepairTaskDTO repairTaskDTO,
-        DiagnosticReportDTO diagnosticReport){
+        DiagnosticReportDTO diagnosticReportDTO) {
 
         this.repairOrderDTO = repairOrderDTO;
         this.repairOrder = repairOrder;
         this.repairTaskDTO = repairTaskDTO;
         this.customerDTO = customerDTO;
         this.bikeDTO = bikeDTO;
-        this.diagnosticReportDTO = diagnosticReport;
+        this.diagnosticReportDTO = diagnosticReportDTO;
     }
 
     public RepairOrderDTO getRepairOrderDTO(){
@@ -39,19 +39,19 @@ public class PrinterParameters {
         return repairOrder.getRepairTasks();
     }
 
-    public CustomerDTO getCustomer(){
+    public CustomerDTO getCustomerDTO(){
         return customerDTO;
     }
 
-    public BikeDTO getBike(){
+    public BikeDTO getBikeDTO(){
         return bikeDTO;
     }
     
-    public RepairTaskDTO getRepairTask(){
+    public RepairTaskDTO getRepairTaskDTO(){
         return repairTaskDTO;
     }
 
-    public DiagnosticReportDTO getDiagnosticReport(){
+    public DiagnosticReportDTO getDiagnosticReportDTO(){
         return diagnosticReportDTO;
     }
 }

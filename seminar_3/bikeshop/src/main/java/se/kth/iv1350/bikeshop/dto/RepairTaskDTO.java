@@ -13,7 +13,7 @@ public class RepairTaskDTO{
      * constructor for creating a repair task
      * @param name      
      * @param description   description of repair task
-     * @param cost          the cost for reparation of task
+     * @param cost          the cost for reparation of task 
      * @param state         if the repair task is fixed or not
      */
 
