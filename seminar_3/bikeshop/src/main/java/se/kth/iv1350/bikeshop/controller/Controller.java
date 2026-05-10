@@ -61,6 +61,7 @@ public class Controller {
      * @param problemDescription A description of the reported problem.
      * @return A {@link RepairOrderDTO} representing the created order.
      */
+    // OBS Behöver kontrolleras!!!!!!
     public RepairOrderDTO createRepairOrder(RepairOrderDTO repairOrderDTO, CustomerDTO customer, BikeDTO bike,
                                             DiagnosticReportDTO problemDescription, int date) {
         currentRepairOrder = new RepairOrder(repairOrderDTO, customer, bike, problemDescription, date);
@@ -90,7 +91,7 @@ public class Controller {
      * @param accepted {@code true} if the customer accepts, {@code false} if rejected.
      * @return The acceptance status that was set.
      */
- 
+    //OBS vi ersätter setOrderStatus med 4 metoder: acceptRepairorder, rejectRepairOrder
     public void setOrderStatus (RepairOrderState state) {
         currentRepairOrder.setState(state);
         printer.printRepairOrder(currentRepairOrder.getRepairOrderDTO(), state);
@@ -102,12 +103,6 @@ public class Controller {
         //totalCostInModel currentRepairTaskCost = RepairOrderDTO(totalCostInModel);
     }
 
-    /**
-     * Updates repairOrder when new info is added
-     */
-    public updateRepairOrder(){
-
-    }
     /**
      * Printer is only triggered at the STATE change to accepted
      */
