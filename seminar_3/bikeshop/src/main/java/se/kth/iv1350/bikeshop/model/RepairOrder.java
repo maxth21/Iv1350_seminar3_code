@@ -21,7 +21,7 @@ public class RepairOrder{
         READY_FOR_APPROVAL,
         REJECTED,
         ACCEPTED
-    }
+    } 
 
     //list of repairtasks
     private List<RepairTaskDTO > repairTasks;
@@ -29,6 +29,10 @@ public class RepairOrder{
     private double totalCostOfRepairTasks;
 
     private RepairOrderState state;
+    private String repairOrderId;
+    private String problemDescription;
+    private int date;
+    private int estimatedCompletitionDate;
 
       
     //konstruktor av RO
@@ -50,7 +54,13 @@ public class RepairOrder{
     public List<RepairTaskDTO> getrepairTasks(){
         return repairTasks;
     } 
-    
+
+
+    public RepairOrderDTO getRepairOrderDTO(){
+
+        return new RepairOrderDTO(repairOrderId, problemDescription, date, estimatedCompletitionDate, state);
+    }
+
     /**
      * This method does not take any paramters, instead it changes the field of the repairorder,
      * so that the RepairOrdreState is marked as Accepted 
