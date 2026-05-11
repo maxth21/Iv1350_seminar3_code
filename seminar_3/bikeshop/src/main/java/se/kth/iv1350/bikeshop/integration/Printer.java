@@ -41,7 +41,7 @@ public class Printer{
                         + " : " + task.getCost() + " kr");
             }
             System.out.println("Total cost: " + param.getRepairOrder().getTotalCostOfRepairTasks() + " kr");
-            System.out.println("State     : " + param.getRepairTaskDTO().getState());
+           // System.out.println("State     : " + param.getRepairTaskDTO().getState());
             System.out.println("====================\n");
     
     }

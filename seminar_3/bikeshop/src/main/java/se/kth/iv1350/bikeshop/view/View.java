@@ -33,13 +33,13 @@ public class View {
      */
     public void run() {
         System.out.println("--- Step 1: Search for customer ---");
-        CustomerDTO customer = controller.searchCustomerByPhoneNr("0701234567");
+        CustomerDTO customer = controller.searchCustomer("0701234567");
         System.out.println("Customer name  : " + customer.getName());
         System.out.println("Customer phone : " + customer.getPhoneNr());
         System.out.println("Customer email : " + customer.getEmail());
 
         System.out.println("\n--- Step 2: Search for bike ---");
-        BikeDTO bike = controller.searchBikeByPhoneNr("0701234567");
+        BikeDTO bike = controller.searchBike("0701234567");
         System.out.println("Bike brand  : " + bike.getBrand());
         System.out.println("Bike model  : " + bike.getModel());
         System.out.println("Serial nr   : " + bike.getSerialNr());

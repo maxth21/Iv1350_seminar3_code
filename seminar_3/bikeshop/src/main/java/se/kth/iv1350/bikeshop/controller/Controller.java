@@ -85,7 +85,8 @@ public class Controller {
      */
     public RepairTaskDTO addRepairTask(String name, String description, double cost) {
         RepairTaskDTO task = new RepairTaskDTO(name, description, cost);
-        return currentRepairOrder.addRepairTask(task);
+        currentRepairOrder.addRepairTask(task);
+        return task;
     }
 
     /**
@@ -104,18 +105,11 @@ public class Controller {
     }
 }
 
-    public DiagnosticReport addDiagnosticReport(){
-        //anrop till model med en getter för att kunna se resultat, läsa vad model har beräknat 
-        //double currentRepairTaskCost = RepairOrder.getTotalCostInModel();
-        //totalCostInModel currentRepairTaskCost = RepairOrderDTO(totalCostInModel);
-    }
-
     /**
      * Printer is only triggered at the STATE change to accepted
      */
     public void printRepairOrders(RepairOrderDTO repairOrder, RepairOrderState state) {
     if (state == RepairOrderState.ACCEPTED) {
-        // skriv ut
         //call on method for prnter in integration
         //somewhere: set state to PRINTED (?) after it has been printed in order to not trigger the printer method more than once
         PrinterParameters param = new PrinterParameters(repairOrder, currentRepairOrder, null, null, null, null);

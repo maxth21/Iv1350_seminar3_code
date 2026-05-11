@@ -4,9 +4,9 @@ import java.util.List;
 
 import se.kth.iv1350.bikeshop.dto.BikeDTO;
 import se.kth.iv1350.bikeshop.dto.CustomerDTO;
+import se.kth.iv1350.bikeshop.dto.DiagnosticReportDTO;
 import se.kth.iv1350.bikeshop.dto.RepairOrderDTO;
 import se.kth.iv1350.bikeshop.dto.RepairTaskDTO;
-import se.kth.iv1350.bikeshop.dto.DiagnosticReportDTO;
 import se.kth.iv1350.bikeshop.model.RepairOrder;
 
 public class PrinterParameters {
@@ -26,7 +26,7 @@ public class PrinterParameters {
         BikeDTO bikeDTO,
         RepairTaskDTO repairTaskDTO,
         List<RepairTaskDTO> repairTaskList)
-        { 
+       { 
 
         this.repairOrderDTO = repairOrderDTO;
         this.repairOrder = repairOrder;
@@ -34,13 +34,16 @@ public class PrinterParameters {
         this.customerDTO = customerDTO;
         this.bikeDTO = bikeDTO;
         this.diagnosticReportDTO = diagnosticReportDTO;
-        this.repairTaskList = repairTaskList;
-        this.totalCostOfRepairTasks = totalCostOfRepairTasks;
+        this.repairTaskDTO = repairTaskDTO;
         
     }
 
     public RepairOrderDTO getRepairOrderDTO(){
         return repairOrderDTO;
+    }
+
+    public RepairOrder getRepairOrder(){
+        return repairOrder;
     }
 
     public List<RepairTaskDTO> getRepairTasksList(){
@@ -63,11 +66,11 @@ public class PrinterParameters {
         return diagnosticReportDTO;
     }
     
-    //added new getter?
-
-    public TotalCostOfRepairTasks getTotalCostOfRepairTasks(){
+    //check syntax here
+   /* public TotalCostOfRepairTasks getTotalCostOfRepairTasks(){
         return getTotalCostOfRepairTasks;
     }
+    */
     
 
 }
