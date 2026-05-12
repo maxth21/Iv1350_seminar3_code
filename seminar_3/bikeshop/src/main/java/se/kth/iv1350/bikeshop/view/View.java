@@ -5,7 +5,10 @@ import se.kth.iv1350.bikeshop.dto.BikeDTO;
 import se.kth.iv1350.bikeshop.dto.CustomerDTO;
 import se.kth.iv1350.bikeshop.dto.RepairOrderDTO;
 import se.kth.iv1350.bikeshop.dto.RepairTaskDTO;
+import se.kth.iv1350.bikeshop.integration.RepairOrderRegistry;
 import se.kth.iv1350.bikeshop.model.RepairOrder.RepairOrderState;
+import se.kth.iv1350.bikeshop.model.RepairOrder;
+
 
 
 
@@ -17,6 +20,7 @@ import se.kth.iv1350.bikeshop.model.RepairOrder.RepairOrderState;
 public class View {
 
     private final Controller controller;
+    private final RepairOrder repairOrders = new RepairOrder(null, null, null, null, 0);
 
     /**
      * Creates a new instance that delegates all calls to the specified controller.
@@ -45,11 +49,14 @@ public class View {
         System.out.println("Serial nr   : " + bike.getSerialNr());
 
         System.out.println("\n--- Step 3: Create repair order ---");
-        RepairOrderDTO order = controller.createRepairOrder(customer, bike, "Battery does not charge");
+        RepairOrderDTO order = controller.createRepairOrder(repairOrderDTO, customer,  bike, problemDescription, date , bike, "Battery does not charge");
         System.out.println("Order ID    : " + order.getRepairOrderId());
         System.out.println("Problem     : " + order.getProblemDescription());
-        System.out.println("Total cost  : " + order.getTotalCost() + " kr");
-        System.out.println("Accepted    : " + order.getSTATE());
+
+        double cost = repairOrders.getTotalCostOfRepairTasks();
+
+        System.out.println("Total cost  : " + repairOrders.getTotalCostOfRepairOrder() + " kr");
+        System.out.println("Accepted    : " + repairOrders.getState());
 
         System.out.println("\n--- Step 4: Add repair tasks ---");
         RepairTaskDTO task1 = controller.addRepairTask(
@@ -68,7 +75,7 @@ public class View {
 
         System.out.println("\n--- Step 5: Customer accepts repair order ---");
         //handel enum here
-        RepairOrderState accepted = controller.setOrderStatus(ACCEPTED);
+       // RepairOrderState accepted = this.RepairOrder.getState(state);
         System.out.println("Accepted    : " + accepted);
     }
 }
