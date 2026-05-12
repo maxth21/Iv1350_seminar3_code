@@ -17,7 +17,8 @@ public class PrinterParameters {
     private RepairTaskDTO repairTaskDTO;
     private DiagnosticReportDTO diagnosticReportDTO;
     private double totalCostOfRepairTasks;
-    private List<RepairOrderDTO> repairTaskList;
+    private List<RepairTaskDTO> repairTaskList;
+    private RepairOrder.RepairOrderState state;
 
     public PrinterParameters(
         RepairOrderDTO repairOrderDTO,
@@ -25,7 +26,8 @@ public class PrinterParameters {
         CustomerDTO customerDTO,
         BikeDTO bikeDTO,
         RepairTaskDTO repairTaskDTO,
-        List<RepairTaskDTO> repairTaskList)
+        List<RepairTaskDTO> repairTaskList,
+        DiagnosticReportDTO diagnosticReportDTO)
        { 
 
         this.repairOrderDTO = repairOrderDTO;
@@ -34,7 +36,7 @@ public class PrinterParameters {
         this.customerDTO = customerDTO;
         this.bikeDTO = bikeDTO;
         this.diagnosticReportDTO = diagnosticReportDTO;
-        this.repairTaskDTO = repairTaskDTO;
+        this.repairTaskList = repairTaskList;
         
     }
 
@@ -64,6 +66,10 @@ public class PrinterParameters {
 
     public DiagnosticReportDTO getDiagnosticReportDTO(){
         return diagnosticReportDTO;
+    }
+
+    public RepairOrder.RepairOrderState getState(){
+        return state;
     }
     
     //check syntax here

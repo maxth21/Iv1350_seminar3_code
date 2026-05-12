@@ -1,11 +1,7 @@
 package se.kth.iv1350.bikeshop.integration;
 
-import se.kth.iv1350.bikeshop.dto.BikeDTO;
-import se.kth.iv1350.bikeshop.dto.CustomerDTO;
 import se.kth.iv1350.bikeshop.dto.RepairOrderDTO;
 import se.kth.iv1350.bikeshop.dto.RepairTaskDTO;
-import se.kth.iv1350.bikeshop.model.RepairOrder.RepairOrderState;
-import se.kth.iv1350.bikeshop.model.RepairOrder;
 
 /**
  * Handles printing of repair orders.
@@ -35,13 +31,15 @@ public class Printer{
                     + " (S/N: " + param.getBikeDTO().getSerialNr() + ")");
             System.out.println("Problem   : " + param.getDiagnosticReportDTO().getProblemDescription());
             System.out.println("--- Tasks ---");
-            for (RepairTaskDTO task : param.getRepairTasksList().getRepairTasks()) {
+            
+            for (RepairTaskDTO task : param.getRepairTasksList()) {
                 System.out.println("  " + task.getName()
                         + " - " + task.getDescription() 
                         + " : " + task.getCost() + " kr");
             }
+            
             System.out.println("Total cost: " + param.getRepairOrder().getTotalCostOfRepairTasks() + " kr");
-           // System.out.println("State     : " + param.getRepairTaskDTO().getState());
+            System.out.println("State     : " + param.getRepairOrder().getState());
             System.out.println("====================\n");
     
     }
