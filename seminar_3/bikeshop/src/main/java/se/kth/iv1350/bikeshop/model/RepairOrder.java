@@ -5,7 +5,7 @@ import java.util.List;
 
 import se.kth.iv1350.bikeshop.dto.BikeDTO;
 import se.kth.iv1350.bikeshop.dto.CustomerDTO;
-import se.kth.iv1350.bikeshop.dto.DiagnosticReportDTO;
+import se.kth.iv1350.bikeshop.dto.DiagnosticReportDTO;  
 import se.kth.iv1350.bikeshop.dto.RepairOrderDTO;
 import se.kth.iv1350.bikeshop.dto.RepairTaskDTO;
 
@@ -21,28 +21,39 @@ public class RepairOrder{
         READY_FOR_APPROVAL,
         REJECTED,
         ACCEPTED
-    } 
+    }
 
     //list of repairtasks
     private List<RepairTaskDTO > repairTasks;
     //TotalCostOfRepairTasks är et fält som model behöver för att det vi skapar ska kunna fortsätta existera så länge objektet finns
     private double totalCostOfRepairTasks;
-
+    private CustomerDTO customer;
+    private BikeDTO bike;
+    private String customersProblemDescription;
+    private String date;
     private RepairOrderState state;
-    private String repairOrderId; 
-    private String problemDescription;
-    private int date;
-    private int estimatedCompletitionDate;
 
       
-    //konstruktor av RO
-    public RepairOrder (RepairOrderDTO repairOrderDTO, 
-                        CustomerDTO customer, 
-                        BikeDTO bike, 
-                        DiagnosticReportDTO problemDescription, 
-                        int date){
+    public RepairOrder(CustomerDTO customer, BikeDTO bike, String customersProblemDescription, String date) {
+        this.customer = customer;
+        this.bike = bike;
+        this.customersProblemDescription = customersProblemDescription;
+        this.date = date; 
+    }
+
+/*     //konstruktor av RO
+    public RepairOrder (List<RepairTaskDTO> repairTaskList){
         this.repairTasks = new ArrayList<>();
-        this.totalCostOfRepairTasks = 0.0; 
+        this.totalCostInModel = 0.0; 
+    } */
+
+    /**
+     * Updates the repair order with the diagnostic report and the list of repair tasks
+     * @param diagnosticReportProblemDescription the problem description from the diagnostic report
+     * @param repairTasks the list of repair tasks to be added to the repair order
+     */
+    public void updateRepairOrder(String diagnosticReportProblemDescription, List<RepairTaskDTO> repairTasks){
+        
     }
 
     //getter method for totalCost
@@ -57,14 +68,14 @@ public class RepairOrder{
 
     //NY getter för state
     public RepairOrderState getState (){
-        return state;
+        return state; 
     }
 
     public RepairOrderDTO getRepairOrderDTO(){
 
         return new RepairOrderDTO(repairOrderId, problemDescription, date, estimatedCompletitionDate, state);
     }
-
+        
     /**
      * This method does not take any paramters, instead it changes the field of the repairorder,
      * so that the RepairOrdreState is marked as Accepted 
@@ -86,15 +97,15 @@ public class RepairOrder{
         this.state = RepairOrderState.READY_FOR_APPROVAL;
 
     }
-
+    
     /**
      * Adds a repairtask DTO to the arraylist repairTasks (containing RepairTaskDTO)
      * and adds the cost
      * @param newTask
-     */  
+     */
     public void addRepairTask(RepairTaskDTO newTask) {
         repairTasks.add(newTask);
         totalCostOfRepairTasks += newTask.getCost();    // Automatically update total cost when task is added
     }
 
-} 
+}
