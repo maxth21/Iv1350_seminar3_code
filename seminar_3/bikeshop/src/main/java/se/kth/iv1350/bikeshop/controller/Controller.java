@@ -66,14 +66,15 @@ public class Controller {
      * @return A {@link RepairOrderDTO} representing the created order.
      */
     // OBS Behöver kontrolleras!!!!!!
-    public RepairOrderDTO createRepairOrder(RepairOrderDTO repairOrderDTO, CustomerDTO customer, BikeDTO bike,
-                                            DiagnosticReportDTO problemDescription, int date) {
-        currentRepairOrder = new RepairOrder(repairOrderDTO, customer, bike, problemDescription, date);
+    public RepairOrderDTO createRepairOrder(CustomerDTO customer, BikeDTO bike,
+                                            String customersProblemDescription, String date) {
+        currentRepairOrder = new RepairOrder(customer, bike, customersProblemDescription, date);
         RepairOrderDTO dto = currentRepairOrder.getRepairOrderDTO();
         registryCreator.getRepairOrderRegistry().saveRepairOrder(dto);
         return dto;
     }
 
+    update
     /**
      * Adds a repair task to the current repair order.
      *
