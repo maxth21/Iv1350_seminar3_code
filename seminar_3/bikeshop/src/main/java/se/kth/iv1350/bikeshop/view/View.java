@@ -48,7 +48,7 @@ public class View {
         System.out.println("Serial nr   : " + bike.getSerialNr());
 
         System.out.println("\n--- Step 3: Create repair order ---");
-        RepairOrderDTO order = controller.createRepairOrder(customer,  bike, customersProblemDescription, date);
+        RepairOrderDTO order = controller.createRepairOrder(customer,  bike, problemDescription, date);
         System.out.println("Order ID    : " + order.getRepairOrderId());
         System.out.println("Problem     : " + order.getProblemDescription());
 
