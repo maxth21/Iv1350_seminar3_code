@@ -16,7 +16,7 @@ public class RepairOrderDTO {
     //public final int CURRENT_DATE = 260504;
 
     private final String repairOrderId;        // final = ID never changes after creation
-    private final String customersProblemDescription;    // final = problem description never changes
+    private final String problemDescription;    // final = problem description never changes
     private final int date;
     private int estimatedCompletionDate;
     private RepairOrderState state;                       // NOT final = changes when order is accepted/rejected
@@ -28,15 +28,15 @@ public class RepairOrderDTO {
      * Creates a new instance with the specified repair order data
      *
      * @param repairOrderId             The unique ID of the repair order
-     * @param customersProblemDescription A description of the reported problem
+     * @param problemDescription A description of the reported problem
      * @param date                      The date where bike was recieved
      * @param estimatedCompletitionDate Estimated date for completing bike reparation 
      * @param RepairOrderState                  The current state of the repair order
      */
 
-    public RepairOrderDTO(String repairOrderId, String customersProblemDescription, int date, int estimatedCompletitionDate, RepairOrderState STATE) {
+    public RepairOrderDTO(String repairOrderId, String problemDescription, int date, int estimatedCompletitionDate, RepairOrderState STATE) {
         this.repairOrderId = repairOrderId;         // Store the unique order ID
-        this.customersProblemDescription = customersProblemDescription; // Store the reported problem
+        this.problemDescription = problemDescription; // Store the reported problem
         this.date = date;
         this.estimatedCompletionDate = estimatedCompletitionDate;
         this.customerDTO = customerDTO;
@@ -51,8 +51,8 @@ public class RepairOrderDTO {
     }
 
     /** @return The problem description. */
-    public String getCustomersProblemDescription(){
-        return customersProblemDescription;
+    public String getProblemDescription(){
+        return problemDescription;
     }
     
     /** @return The date. */
