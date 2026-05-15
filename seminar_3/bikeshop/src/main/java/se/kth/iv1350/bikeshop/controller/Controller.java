@@ -29,7 +29,7 @@ public class Controller {
 
 
 
-    RepairOrderDTO repairOrderDTO = new // Hur görs detta? Går ej att kalla på get problemdescription eftersom 
+    //RepairOrderDTO repairOrderDTO = new // Hur görs detta? Går ej att kalla på get problemdescription eftersom 
     // RepairOrderDTO inte är statisk (kolla rad 115 i samma fil)
 
     /**
@@ -80,7 +80,6 @@ public class Controller {
         return dto;
     }
 
-    update
     /**
      * Adds a repair task to the current repair order.
      *
@@ -112,11 +111,16 @@ public class Controller {
     }
 }
 
-    public String getProblemDescription(){
-        return RepairOrderDTO.getProblemDescription();
+    /**
+     * @param dto
+     * @return problemdescription
+     */
+    public String getProblemDescription(RepairOrderDTO dto){
+        //takes repirOrderDTO as parameter in order to access problemdescr.
+        return dto.getProblemDescription();
     }
 
-    public 
+     
     /**
      * Printer is only triggered at the STATE change to accepted
      */
