@@ -12,18 +12,18 @@ public class DiagnosticReportDTO {
 
     /**
      * Constructor for the diagnostic report dto
-     * @param problemDescription description of problem with the bike.
+     * @param diagnosticReport description of problem with the bike.
      */
 
     public DiagnosticReportDTO(String diagnosticReport){
         this.diagnosticReport = diagnosticReport;
     }
 
-    /**
+    /** 
      * Get method for problem description
      * @return the description of the problem with the bike
      */
     public String getDiagnosticReport() {
-        return diagnosticReport;
+        return this.diagnosticReport;
     }   
 }

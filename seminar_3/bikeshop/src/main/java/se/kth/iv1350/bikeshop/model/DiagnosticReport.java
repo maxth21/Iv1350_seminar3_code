@@ -13,7 +13,7 @@ import se.kth.iv1350.bikeshop.dto.DiagnosticReportDTO;
 public class DiagnosticReport {
 
     //ska den här stringen finnas här eller i DTO egentligen?
-    private String problemDescription;
+    private String diagnosticReport;
 
     /**
      * Creates a new instance of DiagnosticReport. 
@@ -26,13 +26,17 @@ public class DiagnosticReport {
      * An object is created using an reference to DiagnosticRepairDTO. 
      * The data is stored by the model layer and stored 
      *
-     * @param problemDescription A description of the diagnosed problem (from the user?).
+     * @param diagnosticReport A description of the diagnosed problem (from the user?).
      * @return A {@link DiagnosticReportDTO} containing the diagnostic data.
      */
-    public DiagnosticReportDTO addDiagnosticReport(String problemDescription) {
-        this.problemDescription = problemDescription;
-        return new DiagnosticReportDTO(problemDescription);
+    public DiagnosticReportDTO addDiagnosticReport(String diagnosticReport) {
+        this.diagnosticReport = diagnosticReport;
+        return new DiagnosticReportDTO(diagnosticReport);
     }
 
+    //getter method for accessing the report
+    public String getDiagnosticReport() {
+        return diagnosticReport;
+    }
    
 }

@@ -27,9 +27,6 @@ public class Controller {
 
 
 
-    //RepairOrderDTO repairOrderDTO = new // Hur görs detta? Går ej att kalla på get problemdescription eftersom 
-    // RepairOrderDTO inte är statisk (kolla rad 115 i samma fil)
-
     /**
      * Creates a new instance of the controller.
      *
@@ -78,6 +75,7 @@ public class Controller {
         return dto;
     }
 
+    
     /**
      * problem: The method addDiagnosticReport(DiagnosticReportDTO) is undefined for the type RepairOrder
      * cannot find symbol

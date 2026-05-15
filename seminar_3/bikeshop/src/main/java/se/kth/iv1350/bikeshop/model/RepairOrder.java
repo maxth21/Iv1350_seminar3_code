@@ -26,6 +26,7 @@ public class RepairOrder{
     //list of repairtasks
     private List<RepairTaskDTO > repairTasks;
     //TotalCostOfRepairTasks är et fält som model behöver för att det vi skapar ska kunna fortsätta existera så länge objektet finns
+    //skapar fält
     private double totalCostOfRepairTasks;
     private CustomerDTO customer;
     private BikeDTO bike;
@@ -34,7 +35,7 @@ public class RepairOrder{
     private int estimatedCompletionDate = 0;
     private String repairOrderId;
     private RepairOrderState state;
-
+    private DiagnosticReport diagnosticReport;
 
     public RepairOrder(CustomerDTO customer, BikeDTO bike, String customersProblemDescription, int date) {
         this.customer = customer;
@@ -58,9 +59,12 @@ public class RepairOrder{
      * @param diagnosticReportProblemDescription the problem description from the diagnostic report
      * @param repairTasks the list of repair tasks to be added to the repair order
      */
-    public void updateRepairOrder(String diagnosticReportProblemDescription, List<RepairTaskDTO> repairTasks){
+/*
+replaced by addDiagnosticReport and addRepairstasks methods!!!
+public void updateRepairOrder(String diagnosticReportProblemDescription, List<RepairTaskDTO> repairTasks){
         
     }
+    */
 
     //getter method for totalCost
     public double getTotalCostOfRepairTasks (){
@@ -112,6 +116,12 @@ public class RepairOrder{
     public void addRepairTask(RepairTaskDTO newTask) {
         repairTasks.add(newTask);
         totalCostOfRepairTasks += newTask.getCost();    // Automatically update total cost when task is added
+    }
+
+    public DiagnosticReportDTO addDiagnosticReportToRepairOrder(RepairOrderDTO repairOrderDTO, String newReport) {
+        //new object (instans)
+        diagnosticReport = new DiagnosticReport(); 
+        return diagnosticReport.addDiagnosticReport(newReport);
     }
 
 }
