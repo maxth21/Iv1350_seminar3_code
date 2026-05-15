@@ -30,15 +30,21 @@ public class RepairOrder{
     private CustomerDTO customer;
     private BikeDTO bike;
     private String customersProblemDescription;
-    private String date;
+    private int date;
+    private int estimatedCompletionDate = 0;
+    private String repairOrderId;
     private RepairOrderState state;
 
-      
-    public RepairOrder(CustomerDTO customer, BikeDTO bike, String customersProblemDescription, String date) {
+
+    public RepairOrder(CustomerDTO customer, BikeDTO bike, String customersProblemDescription, int date) {
         this.customer = customer;
         this.bike = bike;
         this.customersProblemDescription = customersProblemDescription;
-        this.date = date; 
+        this.date = date;
+        this.repairOrderId = "RO-1";
+        this.state = RepairOrderState.NEWLY_CREATED;
+        this.repairTasks = new ArrayList<>();
+        this.totalCostOfRepairTasks = 0.0;
     }
 
 /*     //konstruktor av RO
@@ -73,7 +79,7 @@ public class RepairOrder{
 
     public RepairOrderDTO getRepairOrderDTO(){
 
-        return new RepairOrderDTO(repairOrderId, problemDescription, date, estimatedCompletitionDate, state);
+        return new RepairOrderDTO(repairOrderId, customersProblemDescription, date, estimatedCompletionDate, state);
     }
         
     /**

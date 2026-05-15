@@ -29,7 +29,7 @@ public class Printer{
             System.out.println("Bike      : " + param.getBikeDTO().getBrand()
                     + " " + param.getBikeDTO().getModel()
                     + " (S/N: " + param.getBikeDTO().getSerialNr() + ")");
-            System.out.println("Problem   : " + param.getDiagnosticReportDTO().getDiagnosticReportProblemDescription());
+            System.out.println("Problem   : " + param.getDiagnosticReportDTO().getDiagnosticReport());
             System.out.println("--- Tasks ---");
             
             for (RepairTaskDTO task : param.getRepairTasksList()) {

@@ -6,9 +6,7 @@ import se.kth.iv1350.bikeshop.dto.CustomerDTO;
 import se.kth.iv1350.bikeshop.dto.DiagnosticReportDTO;
 import se.kth.iv1350.bikeshop.dto.RepairOrderDTO;
 import se.kth.iv1350.bikeshop.dto.RepairTaskDTO;
-import se.kth.iv1350.bikeshop.integration.RepairOrderRegistry;
 import se.kth.iv1350.bikeshop.model.RepairOrder.RepairOrderState;
-import se.kth.iv1350.bikeshop.model.RepairOrder;
 
 
 
@@ -49,19 +47,15 @@ public class View {
         System.out.println("Serial nr   : " + bike.getSerialNr());
 
         System.out.println("\n--- Step 3: Create repair order ---");
-        RepairOrderDTO order = controller.createRepairOrder(customer,  bike, problemDescription, date);
+        String problemDescription = "Battery does not charge";
+        int date = 260504;
+        RepairOrderDTO order = controller.createRepairOrder(customer, bike, problemDescription, date);
         System.out.println("Order ID    : " + order.getRepairOrderId());
         System.out.println("Problem     : " + order.getProblemDescription());
 
-        
-        System.out.println("\n--- Step 4: Add Diagnostic Report---");
-        DiagnosticReportDTO report = controller.addDiagnosticReport(report);
-        System.out.println("Diagnostic Report    : " + report.getDiagnosticReport());
-
-        double cost = repairOrders.getTotalCostOfRepairTasks();
-
-        System.out.println("Total cost  : " + repairOrders.getTotalCostOfRepairOrder() + " kr");
-        System.out.println("Accepted    : " + repairOrders.getState());
+        System.out.println("\n--- Step 4: Add Diagnostic Report ---");
+        DiagnosticReportDTO report = controller.addDiagnosticReport("Battery has faulty cells");
+        System.out.println("Diagnostic Report : " + report.getDiagnosticReport());
 
         System.out.println("\n--- Step 5: Add repair tasks ---");
         RepairTaskDTO task1 = controller.addRepairTask(
@@ -76,14 +70,9 @@ public class View {
         System.out.println("Description : " + task2.getDescription());
         System.out.println("Cost        : " + task2.getCost() + " kr");
 
-        System.out.println("Total cost so far: " + order.getTotalCost() + " kr");
-
         System.out.println("\n--- Step 6: Customer accepts repair order ---");
-
-        //behöver hämta en instans av aktuell repairOrder för att fungera.
-        RepairOrder currentOrder = controller.getRepairOrder;
-        RepairOrderState state = currentOrder.getState();
-        System.out.println("Accepted    : " + state);
+        controller.setOrderStatus(RepairOrderState.ACCEPTED);
+        System.out.println("Order accepted.");
     }
 }
 //

@@ -1,7 +1,5 @@
 package se.kth.iv1350.bikeshop.controller;
 
-import javax.tools.Diagnostic;
-
 import se.kth.iv1350.bikeshop.dto.BikeDTO;
 import se.kth.iv1350.bikeshop.dto.CustomerDTO;
 import se.kth.iv1350.bikeshop.dto.DiagnosticReportDTO;
@@ -10,7 +8,6 @@ import se.kth.iv1350.bikeshop.dto.RepairTaskDTO;
 import se.kth.iv1350.bikeshop.integration.Printer;
 import se.kth.iv1350.bikeshop.integration.PrinterParameters;
 import se.kth.iv1350.bikeshop.integration.RegistryCreator;
-import se.kth.iv1350.bikeshop.model.DiagnosticReport;
 import se.kth.iv1350.bikeshop.model.RepairOrder;
 import se.kth.iv1350.bikeshop.model.RepairOrder.RepairOrderState;
 
@@ -24,10 +21,9 @@ public class Controller {
     private final RegistryCreator registryCreator;
     private final Printer printer;
     private RepairOrder currentRepairOrder;
-    private CustomerDTO customer;
-    private BikeDTO bike;
-    private DiagnosticReport diagnosticReport;
-    private String problemDescription;
+    private CustomerDTO currentCustomer;
+    private BikeDTO currentBike;
+    private DiagnosticReportDTO currentDiagnosticReport;
 
 
 
@@ -75,7 +71,7 @@ public class Controller {
      */
     // OBS Behöver kontrolleras!!!!!!
     public RepairOrderDTO createRepairOrder(CustomerDTO customer, BikeDTO bike,
-                                            String customersProblemDescription, String date) {
+                                            String customersProblemDescription, int date) {
         currentRepairOrder = new RepairOrder(customer, bike, customersProblemDescription, date);
         RepairOrderDTO dto = currentRepairOrder.getRepairOrderDTO();
         registryCreator.getRepairOrderRegistry().saveRepairOrder(dto);
@@ -92,7 +88,8 @@ public class Controller {
      */
     public DiagnosticReportDTO addDiagnosticReport(String report){
         DiagnosticReportDTO reportDTO = new DiagnosticReportDTO(report);
-        currentRepairOrder.addDiagnosticReport(reportDTO);
+        currentDiagnosticReport = reportDTO;
+        currentRepairOrder.setStateReadyForApproval();
         return reportDTO;
     }
 
@@ -145,9 +142,8 @@ public class Controller {
     if (state == RepairOrderState.ACCEPTED) {
         //call on method for prnter in integration
         //somewhere: set state to PRINTED (?) after it has been printed in order to not trigger the printer method more than once
-        PrinterParameters param = new PrinterParameters(repairOrder, currentRepairOrder, null, null, null, null);
-        Printer print = new Printer();
-        print.printRepairOrder(param); 
+        PrinterParameters param = new PrinterParameters(repairOrder, currentRepairOrder, null, null, null, null, currentDiagnosticReport);
+        printer.printRepairOrder(param);
         
         }
     }

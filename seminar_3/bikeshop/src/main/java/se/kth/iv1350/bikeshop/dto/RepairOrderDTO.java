@@ -19,9 +19,8 @@ public class RepairOrderDTO {
     private final String problemDescription;    // final = problem description never changes
     private final int date;
     private int estimatedCompletionDate;
-    private RepairOrderState state;                       // NOT final = changes when order is accepted/rejected
-    private CustomerDTO customerDTO;
-    private BikeDTO bikeDTO;
+    private double totalCost;
+    private RepairOrderState state;
     
    
     /**
@@ -39,9 +38,7 @@ public class RepairOrderDTO {
         this.problemDescription = problemDescription; // Store the reported problem
         this.date = date;
         this.estimatedCompletionDate = estimatedCompletitionDate;
-        this.customerDTO = customerDTO;
-        this.bikeDTO = bikeDTO;
-        this.state = state;
+        this.state = STATE;
 
     }
 
@@ -60,9 +57,19 @@ public class RepairOrderDTO {
         return date;
     }
 
-     /** @return The total cost of all repair tasks. */
+    /** @return The estimated completion date. */
     public int getEstimatedCompletionDate() {
         return estimatedCompletionDate;
+    }
+
+    /** @return The total cost of all repair tasks. */
+    public double getTotalCost() {
+        return totalCost;
+    }
+
+    /** @return The current state of the repair order. */
+    public RepairOrderState getState() {
+        return state;
     }
 
 }
