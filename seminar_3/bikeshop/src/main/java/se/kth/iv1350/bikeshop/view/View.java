@@ -52,12 +52,18 @@ public class View {
         System.out.println("Order ID    : " + order.getRepairOrderId());
         System.out.println("Problem     : " + order.getProblemDescription());
 
+        
+        System.out.println("\n--- Step 4: Add Diagnostic Report---");
+        RepairOrderDTO order = controller.createRepairOrder(customer,  bike, problemDescription, date);
+        System.out.println("Order ID    : " + order.getRepairOrderId());
+        System.out.println("Problem     : " + order.getProblemDescription());
+
         double cost = repairOrders.getTotalCostOfRepairTasks();
 
         System.out.println("Total cost  : " + repairOrders.getTotalCostOfRepairOrder() + " kr");
         System.out.println("Accepted    : " + repairOrders.getState());
 
-        System.out.println("\n--- Step 4: Add repair tasks ---");
+        System.out.println("\n--- Step 5: Add repair tasks ---");
         RepairTaskDTO task1 = controller.addRepairTask(
                 "Battery replacement", "Replace battery module", 500.0);
         System.out.println("Task added  : " + task1.getName());
@@ -72,7 +78,7 @@ public class View {
 
         System.out.println("Total cost so far: " + order.getTotalCost() + " kr");
 
-        System.out.println("\n--- Step 5: Customer accepts repair order ---");
+        System.out.println("\n--- Step 6: Customer accepts repair order ---");
 
         //behöver hämta en instans av aktuell repairOrder för att fungera.
         RepairOrder currentOrder = controller.getRepairOrder;

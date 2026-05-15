@@ -1,5 +1,7 @@
 package se.kth.iv1350.bikeshop.controller;
 
+import javax.tools.Diagnostic;
+
 import se.kth.iv1350.bikeshop.dto.BikeDTO;
 import se.kth.iv1350.bikeshop.dto.CustomerDTO;
 import se.kth.iv1350.bikeshop.dto.DiagnosticReportDTO;
@@ -79,6 +81,21 @@ public class Controller {
         registryCreator.getRepairOrderRegistry().saveRepairOrder(dto);
         return dto;
     }
+
+    /**
+     * problem: The method addDiagnosticReport(DiagnosticReportDTO) is undefined for the type RepairOrder
+     * cannot find symbol
+        *symbol:   method addDiagnosticReport(DiagnosticReportDTO)
+        *location: variable currentRepairOrder of type RepairOrder
+     * @param report is the diagnostic report entered by technician
+     * @return
+     */
+    public DiagnosticReportDTO addDiagnosticReport(String report){
+        DiagnosticReportDTO reportDTO = new DiagnosticReportDTO(report);
+        currentRepairOrder.addDiagnosticReport(reportDTO);
+        return reportDTO;
+    }
+
 
     /**
      * Adds a repair task to the current repair order.
