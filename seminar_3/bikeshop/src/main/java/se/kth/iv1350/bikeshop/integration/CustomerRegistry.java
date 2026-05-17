@@ -22,26 +22,25 @@ public class CustomerRegistry {
         addSampleData();               // Fill with fake customers (replaces a real database)
     }
 
-    
-
-
     /**
      * Searches for a customer with the specified phone number.
      * The equals method requires a specified format in order to work as it should. 
      * We only handle 10-digit phone numbers starting with 0.
      *
-     * @param phoneNr The phone number to search for.
-     * @return The found {@link CustomerDTO}, or <code>null</code> if no customer
-     *         with the given phone number exists (alternative flow 5a).
+     * @param phoneNr The phone number to search for
+     * @return The found {@link CustomerDTO}
+     * @throws UnknownPhoneNrException if the phone number is not in the correct format (alternative flow 5a)
      */
-    
-    public CustomerDTO findCustomer(String phoneNr) {
+
+    public CustomerDTO findCustomer(String phoneNr) throws UnknownPhoneNrException {
         for (CustomerDTO customer : customers) {        // Loop through every customer in the list
             if (customer.getPhoneNr().equals(phoneNr)) {    // Check if this customer's phone matches
                 return customer;                        // Match found — return it immediately
             }
+            else{
+                throw new UnknownPhoneNrException();
+            }
         }
-        return null; // No match found — return null (triggers alternative flow 5a in View)
     }
 
     // Private helper — not part of public interface, no Javadoc needed

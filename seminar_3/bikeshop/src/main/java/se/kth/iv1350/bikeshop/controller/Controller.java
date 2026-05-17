@@ -45,7 +45,12 @@ public class Controller {
      * @return The found {@link CustomerDTO}, or {@code null} if no match exists.
      */
     public CustomerDTO searchCustomer(String phoneNr) {
-        return registryCreator.getCustomerRegistry().findCustomer(phoneNr);
+        try{  
+            return registryCreator.getCustomerRegistry().findCustomer(phoneNr);
+        }catch(UnknownPhoneNrException e){
+            System.out
+        }
+    
     }
 
     /**
