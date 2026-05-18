@@ -36,7 +36,7 @@ public class CustomerRegistryTest {
         */
  
     @Test
-    public void testIfContainsCorrectPhoneNr(){       
+    public void testIfContainsCorrectPhoneNr() throws UnknownPhoneNrException {       
         
         CustomerRegistry registry = new CustomerRegistry();
         CustomerDTO customer = registry.findCustomer("0701234567");
@@ -45,7 +45,7 @@ public class CustomerRegistryTest {
     }
 
       @Test
-    public void testIfContainsCorrectName(){       
+    public void testIfContainsCorrectName() throws UnknownPhoneNrException {       
         
         CustomerRegistry registry = new CustomerRegistry();
         CustomerDTO customer = registry.findCustomer("0701234567");
@@ -54,7 +54,7 @@ public class CustomerRegistryTest {
     }
 
          @Test
-    public void testIfContainsCorrectEmail(){       
+    public void testIfContainsCorrectEmail() throws UnknownPhoneNrException {       
         
         CustomerRegistry registry = new CustomerRegistry();
         CustomerDTO customer = registry.findCustomer("0701234567");
@@ -64,7 +64,7 @@ public class CustomerRegistryTest {
         
 
     @Test
-    void testFindExistingCustomer() {
+    void testFindExistingCustomer() throws UnknownPhoneNrException {
         CustomerDTO result = registry.findCustomer("0701234567");
         assertNotNull(result, "Should find existing customer.");
     }
