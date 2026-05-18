@@ -37,10 +37,8 @@ public class CustomerRegistry {
             if (customer.getPhoneNr().equals(phoneNr)) {    // Check if this customer's phone matches
                 return customer;                        // Match found — return it immediately
             }
-            else{
-                throw new UnknownPhoneNrException();
-            }
         }
+        throw new UnknownPhoneNrException();
     }
 
     // Private helper — not part of public interface, no Javadoc needed
