@@ -1,4 +1,4 @@
-package se.kth.iv1350.bikeshop.controller;
+package se.kth.iv1350.bikeshop.controller; 
 
 import se.kth.iv1350.bikeshop.dto.BikeDTO;
 import se.kth.iv1350.bikeshop.dto.CustomerDTO;
@@ -8,9 +8,9 @@ import se.kth.iv1350.bikeshop.dto.RepairTaskDTO;
 import se.kth.iv1350.bikeshop.integration.Printer;
 import se.kth.iv1350.bikeshop.integration.PrinterParameters;
 import se.kth.iv1350.bikeshop.integration.RegistryCreator;
+import se.kth.iv1350.bikeshop.integration.UnknownPhoneNrException;
 import se.kth.iv1350.bikeshop.model.RepairOrder;
 import se.kth.iv1350.bikeshop.model.RepairOrder.RepairOrderState;
-import se.kth.iv1350.bikeshop.integration.UnknownPhoneNrException;
 
 
 /**
@@ -45,14 +45,16 @@ public class Controller {
      * @param phoneNr The phone number to search for.
      * @return The found {@link CustomerDTO}, or {@code null} if no match exists.
      */
-    public CustomerDTO searchCustomer(String phoneNr){
+    public CustomerDTO searchCustomer(String phoneNr) throws PhoneNrNotFoundException{
         try{  
             return registryCreator.getCustomerRegistry().findCustomer(phoneNr);
         }catch(UnknownPhoneNrException e){
             System.out.println(e.getMessage());
-            return null;
+            throw new PhoneNrNotFoundException();
+
+            //return null;
         }
-    
+
     }
 
     /**

@@ -41,11 +41,12 @@ public class RepairOrder{
         this.customer = customer;
         this.bike = bike;
         this.customersProblemDescription = customersProblemDescription;
-        this.date = date;
+        this.date = 260518;
         this.repairOrderId = "RO-1";
         this.state = RepairOrderState.NEWLY_CREATED;
         this.repairTasks = new ArrayList<>();
         this.totalCostOfRepairTasks = 0.0;
+    
     }
 
 /*     //konstruktor av RO

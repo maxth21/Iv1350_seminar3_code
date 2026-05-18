@@ -70,7 +70,7 @@ public class CustomerRegistryTest {
     }
 
     @Test
-    void testFindNonExistingCustomerReturnsNull() {
+    void testFindNonExistingCustomerReturnsNull() throws UnknownPhoneNrException {
         CustomerDTO result = registry.findCustomer("0000000000");
         assertNull(result, "Should return null for unknown customer.");
     }
