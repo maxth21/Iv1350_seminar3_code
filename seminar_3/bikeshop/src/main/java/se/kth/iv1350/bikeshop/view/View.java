@@ -1,5 +1,7 @@
 package se.kth.iv1350.bikeshop.view;
 
+import java.time.LocalDate;
+
 import se.kth.iv1350.bikeshop.controller.Controller;
 import se.kth.iv1350.bikeshop.controller.PhoneNrNotFoundException;
 import se.kth.iv1350.bikeshop.dto.BikeDTO;
@@ -8,7 +10,6 @@ import se.kth.iv1350.bikeshop.dto.DiagnosticReportDTO;
 import se.kth.iv1350.bikeshop.dto.RepairOrderDTO;
 import se.kth.iv1350.bikeshop.dto.RepairTaskDTO;
 import se.kth.iv1350.bikeshop.model.RepairOrder.RepairOrderState;
-import java.time.LocalDate;
 
 
 
@@ -40,7 +41,7 @@ public class View {
 
         CustomerDTO customer;
 
-        try{customer = controller.searchCustomer("0701234560");
+        try{customer = controller.searchCustomer("0701234567");
         }   catch (PhoneNrNotFoundException exc){
             System.out.println(exc.getMessage());
             return;
@@ -62,6 +63,7 @@ public class View {
         RepairOrderDTO order = controller.createRepairOrder(customer, bike, problemDescription, currentDate);
         System.out.println("Order ID    : " + order.getRepairOrderId());
         System.out.println("Problem     : " + order.getProblemDescription());
+        System.out.println("Date        : " + currentDate);
 
         
         System.out.println("\n--- Step 4: Add Diagnostic Report ---");

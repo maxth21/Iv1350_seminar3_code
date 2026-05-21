@@ -33,7 +33,11 @@ public class CustomerRegistry {
      */
 
     public CustomerDTO findCustomer(String phoneNr) throws UnknownPhoneNrException, DatabaseFailureException{
+        String fakeDataNr = "8888888888";
         for (CustomerDTO customer : customers) {        // Loop through every customer in the list
+            if(fakeDataNr.equals(phoneNr)) {
+                throw new DatabaseFailureException();
+            }
             if (customer.getPhoneNr().equals(phoneNr)) {    // Check if this customer's phone matches
                 return customer;                        // Match found — return it immediately
             }

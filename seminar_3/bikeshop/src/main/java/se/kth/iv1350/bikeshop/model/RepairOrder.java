@@ -37,10 +37,9 @@ public class RepairOrder{
     private DiagnosticReport diagnosticReport;
 
     public RepairOrder(CustomerDTO customer, BikeDTO bike, String customersProblemDescription, LocalDate date) {
-        this.customer = customer;
-        this.bike = bike;
+        //this.customer = customer;
+        //this.bike = bike;
         this.customersProblemDescription = customersProblemDescription;
-        this.date = 260518;
         this.repairOrderId = "RO-1";
         this.state = RepairOrderState.NEWLY_CREATED;
         this.repairTasks = new ArrayList<>();

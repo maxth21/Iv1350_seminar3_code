@@ -36,7 +36,7 @@ public class CustomerRegistryTest {
         */
  
     @Test
-    public void testIfContainsCorrectPhoneNr() throws UnknownPhoneNrException {       
+    public void testIfContainsCorrectPhoneNr() throws UnknownPhoneNrException, DatabaseFailureException {       
         
         CustomerRegistry registry = new CustomerRegistry();
         CustomerDTO customer = registry.findCustomer("0701234567");
@@ -45,7 +45,7 @@ public class CustomerRegistryTest {
     }
 
       @Test
-    public void testIfContainsCorrectName() throws UnknownPhoneNrException {       
+    public void testIfContainsCorrectName() throws UnknownPhoneNrException, DatabaseFailureException {       
         
         CustomerRegistry registry = new CustomerRegistry();
         CustomerDTO customer = registry.findCustomer("0701234567");
@@ -54,7 +54,7 @@ public class CustomerRegistryTest {
     }
 
          @Test
-    public void testIfContainsCorrectEmail() throws UnknownPhoneNrException {       
+    public void testIfContainsCorrectEmail() throws UnknownPhoneNrException, DatabaseFailureException {       
         
         CustomerRegistry registry = new CustomerRegistry();
         CustomerDTO customer = registry.findCustomer("0701234567");
@@ -64,13 +64,13 @@ public class CustomerRegistryTest {
         
 
     @Test
-    void testFindExistingCustomer() throws UnknownPhoneNrException {
+    void testFindExistingCustomer() throws UnknownPhoneNrException, DatabaseFailureException {
         CustomerDTO result = registry.findCustomer("0701234567");
         assertNotNull(result, "Should find existing customer.");
     }
 
     @Test
-    void testFindNonExistingCustomerReturnsNull() throws UnknownPhoneNrException {
+    void testFindNonExistingCustomerReturnsNull() throws UnknownPhoneNrException, DatabaseFailureException {
         CustomerDTO result = registry.findCustomer("0000000000");
         assertNull(result, "Should return null for unknown customer.");
     }
