@@ -1,10 +1,13 @@
 package se.kth.iv1350.bikeshop.controller;
 
+import java.time.LocalDate;
+
 import se.kth.iv1350.bikeshop.dto.BikeDTO;
 import se.kth.iv1350.bikeshop.dto.CustomerDTO;
 import se.kth.iv1350.bikeshop.dto.DiagnosticReportDTO;
 import se.kth.iv1350.bikeshop.dto.RepairOrderDTO;
 import se.kth.iv1350.bikeshop.dto.RepairTaskDTO;
+import se.kth.iv1350.bikeshop.integration.DatabaseFailureException;
 import se.kth.iv1350.bikeshop.integration.Printer;
 import se.kth.iv1350.bikeshop.integration.PrinterParameters;
 import se.kth.iv1350.bikeshop.integration.RegistryCreator;
@@ -22,8 +25,6 @@ public class Controller {
     private final RegistryCreator registryCreator;
     private final Printer printer;
     private RepairOrder currentRepairOrder;
-    private CustomerDTO currentCustomer;
-    private BikeDTO currentBike;
     private DiagnosticReportDTO currentDiagnosticReport;
 
 
@@ -51,6 +52,9 @@ public class Controller {
         }catch(UnknownPhoneNrException e){
             System.out.println(e.getMessage());
             return null;
+        }catch(DatabaseFailureException i){
+            System.out.println(i.getMessage());
+            return null;
         }
     
     }
@@ -75,7 +79,7 @@ public class Controller {
      */
     // OBS Behöver kontrolleras!!!!!!
     public RepairOrderDTO createRepairOrder(CustomerDTO customer, BikeDTO bike,
-                                            String customersProblemDescription, int date) {
+                                            String customersProblemDescription, LocalDate date) {
         currentRepairOrder = new RepairOrder(customer, bike, customersProblemDescription, date);
         RepairOrderDTO dto = currentRepairOrder.getRepairOrderDTO();
         registryCreator.getRepairOrderRegistry().saveRepairOrder(dto);
