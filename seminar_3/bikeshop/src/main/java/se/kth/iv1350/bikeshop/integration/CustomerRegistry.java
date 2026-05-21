@@ -32,7 +32,7 @@ public class CustomerRegistry {
      * @throws UnknownPhoneNrException if the phone number is not in the correct format (alternative flow 5a)
      */
 
-    public CustomerDTO findCustomer(String phoneNr) throws UnknownPhoneNrException {
+    public CustomerDTO findCustomer(String phoneNr) throws UnknownPhoneNrException, DatabaseFailureException{
         for (CustomerDTO customer : customers) {        // Loop through every customer in the list
             if (customer.getPhoneNr().equals(phoneNr)) {    // Check if this customer's phone matches
                 return customer;                        // Match found — return it immediately
