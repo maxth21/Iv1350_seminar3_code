@@ -7,6 +7,7 @@ import se.kth.iv1350.bikeshop.dto.DiagnosticReportDTO;
 import se.kth.iv1350.bikeshop.dto.RepairOrderDTO;
 import se.kth.iv1350.bikeshop.dto.RepairTaskDTO;
 import se.kth.iv1350.bikeshop.model.RepairOrder.RepairOrderState;
+import java.time.LocalDate;
 
 
 
@@ -48,11 +49,10 @@ public class View {
 
         System.out.println("\n--- Step 3: Create repair order ---");
         String problemDescription = "Battery does not charge";
-        int date = 260504;
-        RepairOrderDTO order = controller.createRepairOrder(customer, bike, problemDescription, date);
+        LocalDate currentDate = LocalDate.now();
+        RepairOrderDTO order = controller.createRepairOrder(customer, bike, problemDescription, currentDate);
         System.out.println("Order ID    : " + order.getRepairOrderId());
         System.out.println("Problem     : " + order.getProblemDescription());
-
         System.out.println("\n--- Step 4: Add Diagnostic Report ---");
         DiagnosticReportDTO report = controller.addDiagnosticReport("Battery has faulty cells");
         System.out.println("Diagnostic Report : " + report.getDiagnosticReport());
