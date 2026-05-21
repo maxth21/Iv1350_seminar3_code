@@ -1,6 +1,7 @@
 package se.kth.iv1350.bikeshop.view;
 
 import se.kth.iv1350.bikeshop.controller.Controller;
+import se.kth.iv1350.bikeshop.controller.PhoneNrNotFoundException;
 import se.kth.iv1350.bikeshop.dto.BikeDTO;
 import se.kth.iv1350.bikeshop.dto.CustomerDTO;
 import se.kth.iv1350.bikeshop.dto.DiagnosticReportDTO;
@@ -36,8 +37,16 @@ public class View {
      */
     public void run() {
         System.out.println("--- Step 1: Search for customer ---");
-        CustomerDTO customer = controller.searchCustomer("0701234567");
-        System.out.println("Customer name  : " + customer.getName());
+
+        CustomerDTO customer;
+
+        try{customer = controller.searchCustomer("0701234560");
+        }   catch (PhoneNrNotFoundException exc){
+            System.out.println(exc.getMessage());
+            return;
+        }
+
+                System.out.println("Customer name  : " + customer.getName());
         System.out.println("Customer phone : " + customer.getPhoneNr());
         System.out.println("Customer email : " + customer.getEmail());
  
@@ -53,6 +62,8 @@ public class View {
         RepairOrderDTO order = controller.createRepairOrder(customer, bike, problemDescription, currentDate);
         System.out.println("Order ID    : " + order.getRepairOrderId());
         System.out.println("Problem     : " + order.getProblemDescription());
+
+        
         System.out.println("\n--- Step 4: Add Diagnostic Report ---");
         DiagnosticReportDTO report = controller.addDiagnosticReport("Battery has faulty cells");
         System.out.println("Diagnostic Report : " + report.getDiagnosticReport());
@@ -71,6 +82,8 @@ public class View {
         System.out.println("Cost        : " + task2.getCost() + " kr");
 
         System.out.println("\n--- Step 6: Customer accepts repair order ---");
+        //Jag har i alla fall tittat på koden, och ett fel jag såg var att vyn aldrig ska importera något från modellen och integrationslagret, 
+        // annat än DTO:er. I den här koden importeras dock både RepairOrder och RepairOrderRegistry.
         controller.setOrderStatus(RepairOrderState.ACCEPTED);
         System.out.println("Order accepted.");
     }
