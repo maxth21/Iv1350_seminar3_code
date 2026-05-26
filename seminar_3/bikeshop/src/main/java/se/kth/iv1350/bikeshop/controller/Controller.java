@@ -26,11 +26,13 @@ public class Controller {
     private final Printer printer;
     private RepairOrder currentRepairOrder;
     private DiagnosticReportDTO currentDiagnosticReport;
+    
+    private Logger logger;
 
     /**
      * Logger client that prints messages to the logger
      */
-    private Logger logger;
+
     public void setLogger(Logger logger) {
         this.logger = logger;
     }
@@ -41,9 +43,10 @@ public class Controller {
      * @param registryCreator Provides access to all registries.
      * @param printer         The printer used to print repair orders.
      */
-    public Controller(RegistryCreator registryCreator, Printer printer) {
+    public Controller(RegistryCreator registryCreator, Printer printer, Logger logger) {
         this.registryCreator = registryCreator;
         this.printer = printer;
+        this.logger = logger;
     }
 
     /**
@@ -53,9 +56,9 @@ public class Controller {
      * @return The found {@link CustomerDTO}, or {@code null} if no match exists.
      * @throws PhoneNr
      */
-    public CustomerDTO searchCustomer(String phoneNr) throws PhoneNrNotFoundException{ //OBS throws DatabasFailureEsception was removed! cannot throw and catch in same method (checked exception)
+    public CustomerDTO searchCustomer(String phoneNr) throws PhoneNrNotFoundException { //OBS throws DatabasFailureEsception was removed! cannot throw and catch in same method (checked exception)
         try{  
-            return registryCreator.getCustomerRegistry().findCustomer(phoneNr, 1);
+            return registryCreator.getCustomerRegistry().findCustomer(phoneNr);
         }catch(UnknownPhoneNrException e){
             throw new PhoneNrNotFoundException();
         }catch(DatabaseFailureException i){
