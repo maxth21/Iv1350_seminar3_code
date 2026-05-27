@@ -41,13 +41,13 @@ public class View {
 
         CustomerDTO customer;
 
-        try{customer = controller.searchCustomer("0701234567");
+        try{customer = controller.searchCustomer("8888888888");
         }   catch (PhoneNrNotFoundException exc){
             System.out.println(exc.getMessage());
             return;
         }
 
-                System.out.println("Customer name  : " + customer.getName());
+        System.out.println("Customer name  : " + customer.getName());
         System.out.println("Customer phone : " + customer.getPhoneNr());
         System.out.println("Customer email : " + customer.getEmail());
  

@@ -22,11 +22,11 @@ import se.kth.iv1350.bikeshop.util.Logger;
  */
 public class Controller {
 
-    private final RegistryCreator registryCreator;
-    private final Printer printer;
+    private RegistryCreator registryCreator;
+    private Printer printer;
     private RepairOrder currentRepairOrder;
     private DiagnosticReportDTO currentDiagnosticReport;
-    
+       
     private Logger logger;
 
     /**
@@ -43,18 +43,25 @@ public class Controller {
      * @param registryCreator Provides access to all registries.
      * @param printer         The printer used to print repair orders.
      */
-    public Controller(RegistryCreator registryCreator, Printer printer, Logger logger) {
+    public Controller(RegistryCreator registryCreator, Printer printer) {
         this.registryCreator = registryCreator;
         this.printer = printer;
+    }
+    /**
+     * ska referera till inparametern i logger
+     * @param logger
+     */
+    public Controller(Logger logger) {
         this.logger = logger;
+
     }
 
     /**
-     * Searches for a customer with the specified phone number.
+     * Searches for a customer with the specified phone number. 
      *
      * @param phoneNr The phone number to search for.
      * @return The found {@link CustomerDTO}, or {@code null} if no match exists.
-     * @throws PhoneNr
+     * @throws PhoneNrNotFoundException
      */
     public CustomerDTO searchCustomer(String phoneNr) throws PhoneNrNotFoundException { //OBS throws DatabasFailureEsception was removed! cannot throw and catch in same method (checked exception)
         try{  
@@ -64,6 +71,8 @@ public class Controller {
         }catch(DatabaseFailureException i){
             logger.log("Database failure code: " + 1);
             System.out.println(i.getMessage());
+            return null; 
+
         }
     }
 

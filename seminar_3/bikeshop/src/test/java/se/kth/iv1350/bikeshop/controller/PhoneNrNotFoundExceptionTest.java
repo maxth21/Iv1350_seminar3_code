@@ -1,29 +1,27 @@
 package se.kth.iv1350.bikeshop.controller;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeAll;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertNull;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import se.kth.iv1350.bikeshop.dto.*;
-import se.kth.iv1350.bikeshop.controller.*;
+import se.kth.iv1350.bikeshop.dto.CustomerDTO;
 
 public class PhoneNrNotFoundExceptionTest{
 
     private CustomerDTO customer;
+    private Controller controller;
     
 
     @BeforeEach
+    public void setUp(){
+       // controller = new Controller();
+    }
     
 
     @Test
-    public void testNoExceptionDuringSuccesfulExecution(){
-        customer = controller.searchCustomer(0701234567);
+    public void testNoExceptionDuringSuccesfulExecution()throws PhoneNrNotFoundException{
+
+        customer = controller.searchCustomer("0701234567");
     }
 
     @Test

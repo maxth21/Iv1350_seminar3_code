@@ -1,5 +1,8 @@
 package se.kth.iv1350.bikeshop.util;
 
+/**
+ * interface for the logger 
+ */
 public interface Logger {
     
     /**
