@@ -10,6 +10,7 @@ import se.kth.iv1350.bikeshop.dto.DiagnosticReportDTO;
 import se.kth.iv1350.bikeshop.dto.RepairOrderDTO;
 import se.kth.iv1350.bikeshop.dto.RepairTaskDTO;
 import se.kth.iv1350.bikeshop.model.RepairOrder.RepairOrderState;
+import se.kth.iv1350.bikeshop.util.Logger;
 
 
 
@@ -32,6 +33,16 @@ public class View {
         this.controller = controller;
     }
 
+    private Logger logger;
+
+    /**
+     * Logger client that prints messages to the logger
+     */
+
+    public void setLogger(Logger logger) {
+        this.logger = logger;
+    }
+
     /**
      * Runs the simulated basic flow for the "Repair Electric Bike" use case.
      * Prints everything returned by the controller.
@@ -39,9 +50,18 @@ public class View {
     public void run() {
         System.out.println("--- Step 1: Search for customer ---");
 
-        CustomerDTO customer;
+        CustomerDTO customer; 
 
-        try{customer = controller.searchCustomer("8888888888");
+        try{controller.searchCustomer("0701234567");
+        }   catch(PhoneNrNotFoundException ex){
+            
+            logger.log(2 + "    User was notified ");
+            System.out.println(ex.getMessage());
+            return;
+        }
+        //client.searchCustomer("0701234567");
+
+        try{customer = controller.searchCustomer("0701234567");
         }   catch (PhoneNrNotFoundException exc){
             System.out.println(exc.getMessage());
             return;
@@ -89,5 +109,5 @@ public class View {
         controller.setOrderStatus(RepairOrderState.ACCEPTED);
         System.out.println("Order accepted.");
     }
+ 
 }
-//

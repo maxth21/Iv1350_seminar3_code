@@ -19,10 +19,6 @@ public class Main {
      * @param args Command line arguments, not used.
      */
     public static void main(String[] args) {
-        
-        Controller client = new Controller(new FileLogger());
-
-        client.searchCustomer("8888888888");
 
         
         RegistryCreator registry   = new RegistryCreator();
@@ -30,6 +26,9 @@ public class Main {
         Logger          logger     = new FileLogger();
         Controller      controller = new Controller(registry, printer);
         View            view       = new View(controller);
+        controller.setLogger(logger);
+        view.setLogger(logger);
+     
         view.run();
 
 

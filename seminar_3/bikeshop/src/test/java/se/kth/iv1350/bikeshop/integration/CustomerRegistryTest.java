@@ -5,6 +5,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -73,6 +75,21 @@ public class CustomerRegistryTest {
     void testFindNonExistingCustomerReturnsNull() throws UnknownPhoneNrException, DatabaseFailureException {
         CustomerDTO result = registry.findCustomer("0000000000");
         assertNull(result, "Should return null for unknown customer.");
+    }
+
+    @Test
+    void testIfDatabaseFailureExceptionIsThrown() throws DatabaseFailureException, UnknownPhoneNrException {
+        CustomerRegistry registry = new CustomerRegistry();
+    
+        DatabaseFailureException exception = assertThrows(DatabaseFailureException.class, () ->
+        {
+            registry.findCustomer("8888888888");
+        });
+
+        String expectedMessage = "It is not possible to call the database";
+        String actualMessage = exception.getMessage();
+
+        assertTrue(actualMessage.contains(expectedMessage));
     }
 
     @AfterEach

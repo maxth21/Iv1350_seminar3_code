@@ -51,10 +51,10 @@ public class Controller {
      * ska referera till inparametern i logger
      * @param logger
      */
-    public Controller(Logger logger) {
-        this.logger = logger;
+    //public Controller(Logger logger) {
+      //  this.logger = logger;
 
-    }
+//    }
 
     /**
      * Searches for a customer with the specified phone number. 
@@ -63,15 +63,16 @@ public class Controller {
      * @return The found {@link CustomerDTO}, or {@code null} if no match exists.
      * @throws PhoneNrNotFoundException
      */
-    public CustomerDTO searchCustomer(String phoneNr) throws PhoneNrNotFoundException { //OBS throws DatabasFailureEsception was removed! cannot throw and catch in same method (checked exception)
+    public CustomerDTO searchCustomer(String phoneNr) throws PhoneNrNotFoundException { 
         try{  
             return registryCreator.getCustomerRegistry().findCustomer(phoneNr);
         }catch(UnknownPhoneNrException e){
+            logger.log(3 + "    Phone number does not exist in the registry");
             throw new PhoneNrNotFoundException();
         }catch(DatabaseFailureException i){
-            logger.log("Database failure code: " + 1);
+            logger.log(1 + "    Database failure code ");
             System.out.println(i.getMessage());
-            return null; 
+            throw new PhoneNrNotFoundException();
 
         }
     }
@@ -94,7 +95,6 @@ public class Controller {
      * @param problemDescription A description of the reported problem.
      * @return A {@link RepairOrderDTO} representing the created order.
      */
-    // OBS Behöver kontrolleras!!!!!!
     public RepairOrderDTO createRepairOrder(CustomerDTO customer, BikeDTO bike,
                                             String customersProblemDescription, LocalDate date) {
         currentRepairOrder = new RepairOrder(customer, bike, customersProblemDescription, date);
@@ -102,7 +102,6 @@ public class Controller {
         registryCreator.getRepairOrderRegistry().saveRepairOrder(dto);
         return dto;
     }
-
     
     /**
      * problem: The method addDiagnosticReport(DiagnosticReportDTO) is undefined for the type RepairOrder

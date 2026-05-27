@@ -1,1 +1,2 @@
-Database failure code: 1
+3    Phone number does not exist in the registry
+2    User was notified 
