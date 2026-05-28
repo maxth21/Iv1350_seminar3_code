@@ -37,6 +37,8 @@ public class RepairOrder implements Observer{
     private RepairOrderState state;
     private DiagnosticReport diagnosticReport;
 
+    private RepairOrderDTO repairOrder;
+
     public RepairOrder(CustomerDTO customer, BikeDTO bike, String ProblemDescription, LocalDate date) {
         //this.customer = customer;
         //this.bike = bike;
@@ -99,7 +101,7 @@ public void updateRepairOrder(String diagnosticReportProblemDescription, List<Re
         this.state = RepairOrderState.REJECTED;
     }
 
-    public void setStateNewlyCreated() {
+   public void setStateNewlyCreated() {
         this.state = RepairOrderState.NEWLY_CREATED;
     }
 
