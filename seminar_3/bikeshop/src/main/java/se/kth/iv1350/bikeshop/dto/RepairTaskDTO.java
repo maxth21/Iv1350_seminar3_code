@@ -10,10 +10,10 @@ public class RepairTaskDTO{
     private double cost;
 
     /**
-     * constructor for creating a repair task
-     * @param name      
-     * @param description   description of repair task
-     * @param cost          the cost for reparation of task 
+     * constructor for creating a repair task.
+     * @param name          the name of the repair task.
+     * @param description   description of repair task.
+     * @param cost          the cost for reparation of task. 
      */
 
     public RepairTaskDTO(String name, String description, double cost){
@@ -23,24 +23,24 @@ public class RepairTaskDTO{
     }
 
     /**
-     * get method for 
-     * @return
+     * get method for name of task.
+     * @return name of task.
      */
     public String getName(){
         return name;
     }
 
     /**
-     * get method for problem description
-     * @return
+     * get method for problem description.
+     * @return problem description.
      */
     public String getDescription(){
         return description;
     }
 
     /**
-     * get method for cost
-     * @return the cost of the repair task
+     * get method for cost.
+     * @return the cost of the repair task.
      */
     public double getCost(){
         return cost;

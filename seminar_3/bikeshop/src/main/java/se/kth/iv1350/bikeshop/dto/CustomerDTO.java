@@ -11,10 +11,10 @@ public class CustomerDTO{
     private String email;
 
     /**
-     * Constructor for CustomerDTO
-     * @param name the name of the customer
-     * @param phoneNr the phone number of the customer
-     * @param email the email of the customer
+     * Constructor for CustomerDTO.
+     * @param name the name of the customer.
+     * @param phoneNr the phone number of the customer.
+     * @param email the email of the customer.
      */
 
     public CustomerDTO(String name, String phoneNr, String email){
@@ -24,8 +24,8 @@ public class CustomerDTO{
     }
 
     /**
-     * Get method for returning the name
-     * @return name
+     * Get method for returning the name.
+     * @return name.
      */
 
     public String getName(){
@@ -33,8 +33,8 @@ public class CustomerDTO{
     }
 
     /**
-     * Get method for returning the phone number
-     * @return phoneNr
+     * Get method for returning the phone number.
+     * @return phoneNr.
      */
 
     public String getPhoneNr(){
@@ -42,8 +42,8 @@ public class CustomerDTO{
     }
 
     /**
-     * Get method for returning the email
-     * @return email
+     * Get method for returning the email.
+     * @return email.
      */
 
     public String getEmail(){

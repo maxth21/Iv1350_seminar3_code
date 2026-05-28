@@ -15,7 +15,7 @@ import se.kth.iv1350.bikeshop.dto.RepairTaskDTO;
  * Needs to import all DTO classes, RepairTask, registries! check how to import 
  */
 
-public class RepairOrder{ 
+public class RepairOrder implements Observer{ 
 
     public enum RepairOrderState {
         NEWLY_CREATED,
@@ -26,20 +26,21 @@ public class RepairOrder{
 
     //list of repairtasks
     private List<RepairTaskDTO > repairTasks;
+    private List<Observer> repairOrderObservers = new ArrayList<>();
     //TotalCostOfRepairTasks är et fält som model behöver för att det vi skapar ska kunna fortsätta existera så länge objektet finns
     //skapar fält
     private double totalCostOfRepairTasks;
-    private String customersProblemDescription;
+    private String ProblemDescription;
     private LocalDate date;
     private int estimatedCompletionDate = 0;
     private String repairOrderId;
     private RepairOrderState state;
     private DiagnosticReport diagnosticReport;
 
-    public RepairOrder(CustomerDTO customer, BikeDTO bike, String customersProblemDescription, LocalDate date) {
+    public RepairOrder(CustomerDTO customer, BikeDTO bike, String ProblemDescription, LocalDate date) {
         //this.customer = customer;
         //this.bike = bike;
-        this.customersProblemDescription = customersProblemDescription;
+        this.ProblemDescription = ProblemDescription;
         this.repairOrderId = "RO-1";
         this.state = RepairOrderState.NEWLY_CREATED;
         this.repairTasks = new ArrayList<>();
@@ -82,7 +83,7 @@ public void updateRepairOrder(String diagnosticReportProblemDescription, List<Re
 
     public RepairOrderDTO getRepairOrderDTO(){
 
-        return new RepairOrderDTO(repairOrderId, customersProblemDescription, date, estimatedCompletionDate, state);
+        return new RepairOrderDTO(repairOrderId, ProblemDescription, date, estimatedCompletionDate, state);
     }
         
     /**
@@ -107,6 +108,18 @@ public void updateRepairOrder(String diagnosticReportProblemDescription, List<Re
 
     }
     
+
+    public void addObserver(Observer observer){
+        repairOrderObservers.add(observer);
+    }
+
+    @Override
+    private void notifyObserver(){
+        for(Observer obs : repairOrderObservers){
+            obs.repairOrderStateHasChanged(repairOrder);
+        }
+    }
+
     /**
      * Adds a repairtask DTO to the arraylist repairTasks (containing RepairTaskDTO)
      * and adds the cost
@@ -115,11 +128,13 @@ public void updateRepairOrder(String diagnosticReportProblemDescription, List<Re
     public void addRepairTask(RepairTaskDTO newTask) {
         repairTasks.add(newTask);
         totalCostOfRepairTasks += newTask.getCost();    // Automatically update total cost when task is added
+        notifyObserver();
     }
 
     public DiagnosticReportDTO addDiagnosticReportToRepairOrder(RepairOrderDTO repairOrderDTO, String newReport) {
         //new object (instans)
         diagnosticReport = new DiagnosticReport(); 
+        notifyObserver();
         return diagnosticReport.addDiagnosticReport(newReport);
     }
 

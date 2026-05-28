@@ -35,12 +35,12 @@ public class RepairOrderDTO {
      * @param RepairOrderState                  The current state of the repair order
      */
 
-    public RepairOrderDTO(String repairOrderId, String problemDescription, LocalDate date, int estimatedCompletitionDate, RepairOrderState STATE) {
+    public RepairOrderDTO(String repairOrderId, String problemDescription, LocalDate date, int estimatedCompletitionDate, RepairOrderState state) {
         this.repairOrderId = repairOrderId;         // Store the unique order ID
         this.problemDescription = problemDescription; // Store the reported problem
         this.date = date;
         this.estimatedCompletionDate = estimatedCompletitionDate;
-        this.state = STATE;
+        this.state = state;
 
     }
 
