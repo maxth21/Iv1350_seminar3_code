@@ -95,10 +95,12 @@ public void updateRepairOrder(String diagnosticReportProblemDescription, List<Re
      */
     public void setStateAccepted() {
         this.state = RepairOrderState.ACCEPTED;
+        notifyObserver();
     }
 
     public void setStateRejected() {
         this.state = RepairOrderState.REJECTED;
+        notifyObserver();
     }
 
    public void setStateNewlyCreated() {
@@ -117,7 +119,7 @@ public void updateRepairOrder(String diagnosticReportProblemDescription, List<Re
 
     private void notifyObserver(){
         for(Observer obs : repairOrderObservers){
-            obs.repairOrderStateHasChanged(repairOrder);
+            obs.repairOrderStateHasChanged(getRepairOrderDTO());
         }
     }
 
