@@ -72,9 +72,10 @@ public class CustomerRegistryTest {
     }
 
     @Test
-    void testFindNonExistingCustomerReturnsNull() throws UnknownPhoneNrException, DatabaseFailureException {
-        CustomerDTO result = registry.findCustomer("0000000000");
-        assertNull(result, "Should return null for unknown customer.");
+    void testFindNonExistingCustomerThrowsException() {
+        assertThrows(UnknownPhoneNrException.class, () -> {
+            registry.findCustomer("0000000000");
+        }, "Should throw UnknownPhoneNrException for unknown phone number.");
     }
 
     @Test
