@@ -26,7 +26,7 @@ public class RepairOrder {
 
     //list of repairtasks
     private List<RepairTaskDTO > repairTasks;
-    private List<Observer> repairOrderObservers = new ArrayList<>();
+    //private List<Observer> repairOrderObservers = new ArrayList<>();
     //TotalCostOfRepairTasks är et fält som model behöver för att det vi skapar ska kunna fortsätta existera så länge objektet finns
     //skapar fält
     private double totalCostOfRepairTasks;
@@ -111,10 +111,10 @@ public void updateRepairOrder(String diagnosticReportProblemDescription, List<Re
     }
     
 
-    public void addObserver(Observer observer){
+   /*  public void addObserver(Observer observer){
         repairOrderObservers.add(observer);
     }
-
+*/
   
   /*   @Override
     private void notifyObserver(){
