@@ -1,3 +1,4 @@
+/*
 package se.kth.iv1350.bikeshop.view;
 
 import java.io.FileWriter;
@@ -11,16 +12,16 @@ import se.kth.iv1350.bikeshop.model.Observer;
 /**
  * Logs repair order updates to a file.
  */
-public class RepairOrderLogger implements Observer {
+//public class RepairOrderLogger implements Observer {
 
-    private static final String LOG_FILE = "repairorder-log.txt";
+  //  private static final String LOG_FILE = "repairorder-log.txt";
 
     /**
      * Called when a repair order has been updated.
      * Writes the update to a log file.
      *
      * @param repairOrder The updated repair order.
-     */
+     *
     @Override
     public void repairOrderStateHasChanged(RepairOrderDTO repairOrder) {
         try (PrintWriter writer = new PrintWriter(new FileWriter(LOG_FILE, true))) {
@@ -31,3 +32,4 @@ public class RepairOrderLogger implements Observer {
         }
     }
 }
+*/ 
