@@ -155,16 +155,6 @@ public class Controller {
 }
 
     /**
-     * @param dto
-     * @return problemdescription
-     */
-    public String getProblemDescription(RepairOrderDTO dto){
-        //takes repirOrderDTO as parameter in order to access problemdescr.
-        return dto.getProblemDescription();
-    }
-
-     
-    /**
      * Printer is only triggered at the STATE change to accepted
      */
     public void printRepairOrders(RepairOrderDTO repairOrder, RepairOrderState state) {
