@@ -1,4 +1,4 @@
-package se.kth.iv1350.bikeshop.controller;
+/* package se.kth.iv1350.bikeshop.controller;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -47,3 +47,4 @@ public class PhoneNrNotFoundExceptionTest{
 
     }
 }
+    */

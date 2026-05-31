@@ -76,7 +76,7 @@ public class View {
         System.out.println("Bike brand  : " + bike.getBrand());
         System.out.println("Bike model  : " + bike.getModel());
         System.out.println("Serial nr   : " + bike.getSerialNr());
-
+ 
         System.out.println("\n--- Step 3: Create repair order ---");
         String problemDescription = "Battery does not charge";
         LocalDate currentDate = LocalDate.now();
@@ -106,6 +106,7 @@ public class View {
         System.out.println("\n--- Step 6: Customer accepts repair order ---");
         //Jag har i alla fall tittat på koden, och ett fel jag såg var att vyn aldrig ska importera något från modellen och integrationslagret, 
         // annat än DTO:er. I den här koden importeras dock både RepairOrder och RepairOrderRegistry.
+        //move to registry ?
         controller.setOrderStatus(RepairOrderState.ACCEPTED);
         System.out.println("Order accepted.");
     }

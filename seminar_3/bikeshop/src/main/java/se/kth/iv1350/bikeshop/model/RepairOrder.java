@@ -37,7 +37,9 @@ public class RepairOrder {
     private RepairOrderState state;
     private DiagnosticReport diagnosticReport;
 
-    public RepairOrder(CustomerDTO customer, BikeDTO bike, String problemDescription, LocalDate date) {
+    private RepairOrderDTO repairOrder;
+
+    public RepairOrder(CustomerDTO customer, BikeDTO bike, String ProblemDescription, LocalDate date) {
         //this.customer = customer;
         //this.bike = bike;
         this.problemDescription = problemDescription;
@@ -99,7 +101,7 @@ public void updateRepairOrder(String diagnosticReportProblemDescription, List<Re
         this.state = RepairOrderState.REJECTED;
     }
 
-    public void setStateNewlyCreated() {
+   public void setStateNewlyCreated() {
         this.state = RepairOrderState.NEWLY_CREATED;
     }
 
@@ -113,13 +115,14 @@ public void updateRepairOrder(String diagnosticReportProblemDescription, List<Re
         repairOrderObservers.add(observer);
     }
 
-    /*@Override
+  
+  /*   @Override
     private void notifyObserver(){
         for(Observer obs : repairOrderObservers){
             obs.repairOrderStateHasChanged(repairorder);
         }
     }
-    */
+*/
     /**
      * Adds a repairtask DTO to the arraylist repairTasks (containing RepairTaskDTO)
      * and adds the cost
@@ -128,13 +131,14 @@ public void updateRepairOrder(String diagnosticReportProblemDescription, List<Re
     public void addRepairTask(RepairTaskDTO newTask) {
         repairTasks.add(newTask);
         totalCostOfRepairTasks += newTask.getCost();    // Automatically update total cost when task is added
+        
         //notifyObserver();
     }
 
     public DiagnosticReportDTO addDiagnosticReportToRepairOrder(RepairOrderDTO repairOrderDTO, String newReport) {
         //new object (instans)
         diagnosticReport = new DiagnosticReport(); 
-        //notifyObserver();
+       // notifyObserver();
         return diagnosticReport.addDiagnosticReport(newReport);
     }
 
