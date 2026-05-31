@@ -15,7 +15,7 @@ import se.kth.iv1350.bikeshop.dto.RepairTaskDTO;
  * Needs to import all DTO classes, RepairTask, registries! check how to import 
  */
 
-public class RepairOrder {
+public class RepairOrder implements Observer{ 
 
     public enum RepairOrderState {
         NEWLY_CREATED,
@@ -95,12 +95,10 @@ public void updateRepairOrder(String diagnosticReportProblemDescription, List<Re
      */
     public void setStateAccepted() {
         this.state = RepairOrderState.ACCEPTED;
-        notifyObserver();
     }
 
     public void setStateRejected() {
         this.state = RepairOrderState.REJECTED;
-        notifyObserver();
     }
 
    public void setStateNewlyCreated() {
@@ -117,9 +115,10 @@ public void updateRepairOrder(String diagnosticReportProblemDescription, List<Re
         repairOrderObservers.add(observer);
     }
 
+    @Override
     private void notifyObserver(){
         for(Observer obs : repairOrderObservers){
-            obs.repairOrderStateHasChanged(getRepairOrderDTO());
+            obs.repairOrderStateHasChanged(repairOrder);
         }
     }
 

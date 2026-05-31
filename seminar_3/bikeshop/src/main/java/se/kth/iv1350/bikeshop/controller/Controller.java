@@ -12,12 +12,9 @@ import se.kth.iv1350.bikeshop.integration.Printer;
 import se.kth.iv1350.bikeshop.integration.PrinterParameters;
 import se.kth.iv1350.bikeshop.integration.RegistryCreator;
 import se.kth.iv1350.bikeshop.integration.UnknownPhoneNrException;
-import se.kth.iv1350.bikeshop.model.Observer;
 import se.kth.iv1350.bikeshop.model.RepairOrder;
 import se.kth.iv1350.bikeshop.model.RepairOrder.RepairOrderState;
 import se.kth.iv1350.bikeshop.util.Logger;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Handles all calls between the view and the model and integration layers.
@@ -29,7 +26,7 @@ public class Controller {
     private Printer printer;
     private RepairOrder currentRepairOrder;
     private DiagnosticReportDTO currentDiagnosticReport;
-    private final List<Observer> observers = new ArrayList<>();
+       
     private Logger logger;
 
     /**
@@ -38,15 +35,6 @@ public class Controller {
 
     public void setLogger(Logger logger) {
         this.logger = logger;
-    }
-
-    /**
-     * Registers an observer to be notified when the repair order is updated.
-     *
-     * @param observer The observer to add.
-     */
-    public void addObserver(Observer observer) {
-        observers.add(observer);
     }
 
     /**
@@ -110,9 +98,6 @@ public class Controller {
     public RepairOrderDTO createRepairOrder(CustomerDTO customer, BikeDTO bike,
                                             String customersProblemDescription, LocalDate date) {
         currentRepairOrder = new RepairOrder(customer, bike, customersProblemDescription, date);
-        for (Observer observer : observers) {
-            currentRepairOrder.addObserver(observer);
-        }
         RepairOrderDTO dto = currentRepairOrder.getRepairOrderDTO();
         registryCreator.getRepairOrderRegistry().saveRepairOrder(dto);
         return dto;

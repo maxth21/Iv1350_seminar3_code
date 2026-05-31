@@ -1,49 +1,49 @@
 package se.kth.iv1350.bikeshop.controller;
 
-import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import se.kth.iv1350.bikeshop.integration.Printer;
-import se.kth.iv1350.bikeshop.integration.RegistryCreator;
-import se.kth.iv1350.bikeshop.util.FileLogger;
+import se.kth.iv1350.bikeshop.dto.CustomerDTO;
 
-public class PhoneNrNotFoundExceptionTest {
+public class PhoneNrNotFoundExceptionTest{
 
+    private CustomerDTO customer;
     private Controller controller;
+    
 
     @BeforeEach
-    public void setUp() {
-        controller = new Controller(new RegistryCreator(), new Printer());
-        controller.setLogger(new FileLogger());
+    public void setUp(){
+       // controller = new Controller();
+    }
+    
+
+    @Test
+    public void testNoExceptionDuringSuccesfulExecution()throws PhoneNrNotFoundException{
+        Controller controller = new Controller(null, null);
+        customer = controller.searchCustomer("0701234567");
+        
+        assertThrows(null, executable);
     }
 
     @Test
-    public void testNoExceptionDuringSuccessfulExecution() {
-        assertDoesNotThrow(() -> controller.searchCustomer("0701234567"));
+    public void testIfExceptionIsThrownWhenFailureOccurs(){
+        Controller controller = new Controller(null, null);
+        PhoneNrNotFoundException testException = assertThrows(PhoneNrNotFoundException.controller, () -> {
+            Controller.throwPhoneNrNotFoundException(); });
     }
-
-    @Test
-    public void testIfExceptionIsThrownWhenFailureOccurs() {
-        assertThrows(PhoneNrNotFoundException.class, () -> {
-            controller.searchCustomer("1111111111");
-        });
-    }
-
+    
     @Test
     public void testCorrectMessageIsStored() {
         PhoneNrNotFoundException instance = new PhoneNrNotFoundException();
-        assertEquals("The searched phone number is not found", instance.getMessage());
+        String result = instance.getMessage();
+        assertEquals("The searched phone number is not found", result);
     }
 
     @Test
-    public void testIfCatchBlocksAreHandledCorrectly() {
-        try {
-            controller.searchCustomer("9999999999");
-        } catch (PhoneNrNotFoundException e) {
-            assertEquals("The searched phone number is not found", e.getMessage());
-        }
+    public void testIfCatchBlocksAreHandledCorrectly(){
+
     }
 }
