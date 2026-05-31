@@ -115,13 +115,14 @@ public void updateRepairOrder(String diagnosticReportProblemDescription, List<Re
         repairOrderObservers.add(observer);
     }
 
-    @Override
+  
+  /*   @Override
     private void notifyObserver(){
         for(Observer obs : repairOrderObservers){
             obs.repairOrderStateHasChanged(repairOrder);
         }
     }
-
+*/
     /**
      * Adds a repairtask DTO to the arraylist repairTasks (containing RepairTaskDTO)
      * and adds the cost
@@ -130,13 +131,14 @@ public void updateRepairOrder(String diagnosticReportProblemDescription, List<Re
     public void addRepairTask(RepairTaskDTO newTask) {
         repairTasks.add(newTask);
         totalCostOfRepairTasks += newTask.getCost();    // Automatically update total cost when task is added
-        notifyObserver();
+        
+        //notifyObserver();
     }
 
     public DiagnosticReportDTO addDiagnosticReportToRepairOrder(RepairOrderDTO repairOrderDTO, String newReport) {
         //new object (instans)
         diagnosticReport = new DiagnosticReport(); 
-        notifyObserver();
+       // notifyObserver();
         return diagnosticReport.addDiagnosticReport(newReport);
     }
 
