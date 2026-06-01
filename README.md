@@ -1,6 +1,6 @@
 # Bikeshop — IV1350 Seminarium 3 & 4
 
-Java-program som implementerar användningsfallet **Reparera elcykel** för kursen Objektorienterad design (IV1350) på KTH.
+Java-program som implementerar användningsfallet **Reparera elcykel** för kursen Objektorienterad design (IV1350) på KTH. Seminar 4 code är fortsättning av seminar 3 code, mappen både heter Se Seminarium 3 & 4 inte bara seminar 3.
 
 ---
 
